@@ -11,7 +11,7 @@ function love.load()
   myFont = love.graphics.newFont(40)
   love.graphics.setFont(myFont)
 
-  --Declaring variables fd
+  --Declaring variables fdd
   winWidth = love.graphics.getWidth()
   winHeight = love.graphics.getHeight()
 
