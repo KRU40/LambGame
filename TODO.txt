@@ -1,0 +1,5 @@
+-Add more bubbles (walle, family, animals, bubbles)
+-Have them move across the screen and bounce against eachother and on walls
+-three game modes (different word each round, free mode, pick as many of the given word within the time)
+-Polish (art music)
+-Stretch goal: commercial version?
