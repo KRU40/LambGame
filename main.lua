@@ -1,4 +1,5 @@
 function love.load()
+  love.window.setFullscreen(true)
   --Loading Files
   welcomeSound = love.audio.newSource("bubbleGame.wav", "static")
   catSound = love.audio.newSource("meow.wav", "static")
@@ -8,6 +9,7 @@ function love.load()
   calmMusic = love.audio.newSource("calm.mp3", "static")
   cat = love.graphics.newImage("walle.jpg")
   mamaPic = love.graphics.newImage("mamaPic.jpg")
+  bubblePic = love.graphics.newImage("Thumb_Bubble.png")
   myFont = love.graphics.newFont(40)
   love.graphics.setFont(myFont)
 
@@ -27,11 +29,12 @@ function love.load()
   exitButton.y = winHeight - exitButton.size
 
   score = 0
-  timer = 10
+  timer = 60
   endTimer = 0
   gameState = 1
   bFirstGame = true
   bReadyToClap = true
+  bDirPos = true
 
   --love.window.setFullscreen(true)
 
@@ -42,6 +45,16 @@ end
 
 function love.update(dt)
   if gameState == 2 then
+    if button.x < love.graphics.getWidth()-100 and bDirPos == true then
+      button.x = button.x + 100 * dt
+    elseif button.x > 100 and bDirPos == false then
+      button.x = button.x - 100 * dt
+    elseif button.x >= love.graphics.getWidth() - 100 then
+      bDirPos = false
+    elseif button.x <= 100 then
+      bDirPos = true
+    end
+
     if timer > 0 then
       timer = timer - dt
     end
@@ -80,6 +93,7 @@ function love.draw()
     love.graphics.circle("line", button.x, button.y, button.size)
     love.graphics.setColor(255, 255,255)
     love.graphics.print("Score = " .. score .. "    Get the Mama    Time:  " .. math.ceil(timer), 0, 0)
+    love.graphics.draw(bubblePic, button.x - button.size - 32, button.y - button.size - 27, 0, 1.75)
     love.graphics.draw(mamaPic, button.x-55, button.y-60, 0, .2)
   end
     love.graphics.setColor(50, 0, 0)
@@ -93,7 +107,7 @@ function love.mousepressed(x, y, b, isTouch)
       score = score + 1
       button.x = love.math.random(button.size, winWidth - button.size)
       button.y = love.math.random(button.size, winHeight - button.size)
-      mamaSound:play()
+      --mamaSound:play()
       buttontSound:play()
     end
   end
@@ -101,7 +115,7 @@ function love.mousepressed(x, y, b, isTouch)
   if gameState == 1 then
     gameState = 2
     score = 0
-    timer = 10
+    timer = 60
   end
 
   if distanceBetween(exitButton.x, exitButton.y, love.mouse.getX(), love.mouse.getY()) < exitButton.size then
