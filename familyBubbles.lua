@@ -8,8 +8,8 @@ function loadFamilyBubble()
   lambSound = love.audio.newSource("lamb.wav", "static")
   yayaSound = love.audio.newSource("yaya.wav", "static")
   papaSound = love.audio.newSource("papa.wav", "static")
-  catPic = love.graphics.newImage("walle.jpg")
   familyBackgroundPic = love.graphics.newImage("familyBackground.png")
+  catPic = love.graphics.newImage("walle.jpg")
   lambPic = love.graphics.newImage("lambPic.jpg")
   mamaPic = love.graphics.newImage("mamaPic.jpg")
   dadaPic = love.graphics.newImage("dadaPic.jpg")
@@ -53,9 +53,16 @@ function spawnFamilyBubble()
 end
 
 function updateFamilyBubbles(dt)
-    for i,b in ipairs(famBubbles) do
-      b.y = b.y - b.speed * dt
-    end
+  bubbleSpawnTimer = bubbleSpawnTimer - dt
+
+  if bubbleSpawnTimer <= 0 then
+    spawnFamilyBubble()
+    bubbleSpawnTimer = 1
+  end
+
+  for i,b in ipairs(famBubbles) do
+    b.y = b.y - b.speed * dt
+  end
 
     for i=#famBubbles, 1, -1 do
       local b = famBubbles[i]
@@ -84,7 +91,25 @@ function updateFamilyBubbles(dt)
       if  b.y < 0 - b.size then
         table.remove(famBubbles, i)
       end
-  end
+   end
+
+   --Update game timer.
+   if timer > 0 then
+     timer = timer - dt
+   end
+
+   if timer <= 0 then
+     timer = 0
+     bReadyToClap = true
+     gameState = 1
+     if score > tonumber(highScore) then
+       love.filesystem.write('highScore.txt', score)
+     end
+
+     for i=#famBubbles, 1, -1 do
+       table.remove(famBubbles, i)
+     end
+   end
 end
 
 function drawFamilyBubbles()
@@ -133,4 +158,8 @@ function drawFamilyBubbles()
       love.graphics.draw(bubblePic, b.x, b.y-100, 0, 1.75)
     end
   end
+
+  love.graphics.setColor(0, .73, .95)
+  love.graphics.print("Score = " .. score, 0, 0)
+  love.graphics.printf("Time: " .. math.ceil(timer), 0, 0, love.graphics.getWidth(), "right")
 end

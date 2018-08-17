@@ -48,99 +48,51 @@ end
 
 function love.update(dt)
   if gameState == 1 then
-    --Stuff
+    if bFirstGame ~= true then
+      if bReadyToClap == true then
+        bReadyToClap = false
+        clapSound:play()
+      end
+    end
   end
 
+  --Update Family bubble game and game timer TODO game timer new module
   if gameState == 2 then
     love.graphics.setFont(myFont)
+
     if onGameBegin == true then
-      spawnFamilyBubble()
       onGameBegin = false
     end
 
     updateFamilyBubbles(dt)
-    bubbleSpawnTimer = bubbleSpawnTimer - dt
-
-    if bubbleSpawnTimer <= 0 then
-      spawnFamilyBubble()
-      bubbleSpawnTimer = 1
-    end
-
-    --Update game timer.
-    if timer > 0 then
-      timer = timer - dt
-    end
-
-    if timer <= 0 then
-      timer = 0
-      bReadyToClap = true
-      gameState = 1
-      if score > tonumber(highScore) then
-        love.filesystem.write('highScore.txt', score)
-      end
-    end
   end
 
-    if gameState == 3 then
-      love.graphics.setFont(myFont)
-      if onGameBegin == true then
-        --spawnNumBubble()
-        onGameBegin = false
-      end
+  if gameState == 3 then
+    love.graphics.setFont(myFont)
 
-      updateNumBubbles(dt)
-      bubbleSpawnTimer = bubbleSpawnTimer - dt
-
-      if bubbleSpawnTimer <= 0 then
-        --spawnNumBubble()
-        bubbleSpawnTimer = 1
-      end
-
-      --Update game timer.
-      if timer > 0 then
-        timer = timer - dt
-      end
-
-      if timer <= 0 then
-        timer = 0
-        bReadyToClap = true
-        gameState = 1
-        if score > tonumber(highScore) then
-          love.filesystem.write('highScore.txt', score)
-        end
+    if onGameBegin == true then
+      onGameBegin = false
     end
-  end
 
-  if gameState == 1 then
-     if bFirstGame ~= true then
-       if bReadyToClap == true then
-         bReadyToClap = false
-         clapSound:play()
-       end
-     end
+    updateNumBubbles(dt)
   end
 end
 
 function love.draw()
   love.graphics.setColor(0, .73, .95)
 
+  --Draw Main menu
   if gameState == 1 then
     drawMainMenu()
   end
 
+
   if gameState == 2 then
-    timer = 30
     drawFamilyBubbles()
-    love.graphics.setColor(0, .73, .95)
-    love.graphics.print("Score = " .. score, 0, 0)
-    love.graphics.printf("Time: " .. math.ceil(timer), 0, 0, love.graphics.getWidth(), "right")
   end
 
   if gameState == 3 then
     drawNumBubble()
-    love.graphics.setColor(0, .73, .95)
-    love.graphics.print("Score = " .. score, 0, 0)
-    love.graphics.printf("Time: " .. math.ceil(timer), 0, 0, love.graphics.getWidth(), "right")
   end
 
     love.graphics.setColor(50, 0, 0)

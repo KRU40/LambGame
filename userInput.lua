@@ -21,21 +21,22 @@ function love.mousepressed(x, y, button, isTouch)
   end
 
   if gameState == 1 then
+    --Family bubble game chosen
     if distanceBetween(200 + 94.5, love.graphics.getHeight()/2.5 + 94.5, love.mouse.getX(), love.mouse.getY()) < 94.5 then
-      love.graphics.draw(bubblePic, 200, love.graphics.getHeight()/2.5, 0, 1.75)
-      love.graphics.setColor(0, 0, 0)
       buttonSound:play()
+      clapSound:play()
       bFirstGame = false
-      gameState = 2
       score = 0
+      timer = 30
       onGameBegin = true
       gameState = 2
     end
 
+    --Number bubble game chosen
     if distanceBetween(400 + 94.5, love.graphics.getHeight()/2.5 + 94.5, love.mouse.getX(), love.mouse.getY()) < 94.5 then
       buttonSound:play()
+      clapSound:play()
       bFirstGame = false
-      gameState = 2
       score = 0
       timer = 30
       onGameBegin = true
@@ -43,6 +44,7 @@ function love.mousepressed(x, y, button, isTouch)
     end
   end
 
+  --User has chosen to exit TODO find a better design for this
   if distanceBetween(exitButton.x, exitButton.y, love.mouse.getX(), love.mouse.getY()) < exitButton.size then
     love.event.quit(exitstatus)
   end

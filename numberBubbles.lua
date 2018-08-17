@@ -75,6 +75,24 @@ function updateNumBubbles(dt)
       table.remove(numBubbles, i)
     end
   end
+
+  --Update game timer.
+  if timer > 0 then
+    timer = timer - dt
+  end
+
+  if timer <= 0 then
+    timer = 0
+    bReadyToClap = true
+    gameState = 1
+    if score > tonumber(highScore) then
+      love.filesystem.write('highScore.txt', score)
+    end
+
+    for i=#numBubbles, 1, -1 do
+      table.remove(numBubbles, i)
+    end
+  end
 end
 
 function drawNumBubble()
@@ -143,4 +161,8 @@ function drawNumBubble()
       love.graphics.draw(tenPic, n.x + bubblePic:getWidth()/2.75, n.y - bubblePic:getHeight()/1.75, 0, .5)
     end
   end
+
+  love.graphics.setColor(0, .73, .95)
+  love.graphics.print("Score = " .. score, 0, 0)
+  love.graphics.printf("Time: " .. math.ceil(timer), 0, 0, love.graphics.getWidth(), "right")
 end
