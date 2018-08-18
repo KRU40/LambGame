@@ -1,7 +1,7 @@
 menuBubbles = {}
 
 function drawMainMenu()
-  love.graphics.print("High Score = " .. highScore, 0, 0)
+  --love.graphics.print("High Score = " .. highScore, 0, 0)
   love.graphics.draw(menuBackground, 0, 0)
   love.graphics.setFont(largeFont)
   love.graphics.setColor(1, 1, 1)
