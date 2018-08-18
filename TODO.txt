@@ -1,7 +1,9 @@
--Add more bubbles (walle, family, animals, bubbles)
--Have bubbles them move across the screen at random
--bubbles bounce against each other
--bubbles bounce off walls at realistic angles
--three game modes (different word each round, free mode, pick as many of the given word within the time)
--Polish (art music)
+-Add more lua files to clean things up-
+-Add more bubbles (walle, family, animals, shapes, bubbles, main menu)
+-game modes (different word each round, free mode, pick as many of the given word within the time, numbers, colors)
+-Better way to accuratly check for bubble pop
+-Polish (art pass, audio and music)
 -Stretch goal: commercial version?
+
+Get menu working
+move family to own lua file
