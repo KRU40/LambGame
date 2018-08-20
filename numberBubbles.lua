@@ -12,6 +12,17 @@ function loadNumBubble()
   eightPic = love.graphics.newImage("eight.png")
   ninePic = love.graphics.newImage("nine.png")
   tenPic = love.graphics.newImage("ten.png")
+  oneSound = love.audio.newSource("one.wav", "static")
+  twoSound = love.audio.newSource("two.wav", "static")
+  lambTwoSound = love.audio.newSource("liamTwo.wav", "static")
+  threeSound = love.audio.newSource("three.wav", "static")
+  fourSound = love.audio.newSource("four.wav", "static")
+  fiveSound = love.audio.newSource("five.wav", "static")
+  sixSound = love.audio.newSource("six.wav", "static")
+  sevenSound = love.audio.newSource("seven.wav", "static")
+  eightSound = love.audio.newSource("eight.wav", "static")
+  nineSound = love.audio.newSource("nine.wav", "static")
+  tenSound = love.audio.newSource("ten.wav", "static")
   bubbleNumSpawnTimer = 1
 end
 
@@ -73,6 +84,43 @@ function updateNumBubbles(dt)
     local n = numBubbles[i]
     if n.popped == true or n.y < 0 - n.size then
       table.remove(numBubbles, i)
+
+      if n.type == "1" then
+        oneSound:play()
+
+      elseif n.type == "2" then
+        local randomTwo = math.random(1, 2)
+        if randomTwo == 1 then
+          twoSound:play()
+
+        else
+          lambTwoSound:play()
+        end
+
+      elseif n.type == "3" then
+        threeSound:play()
+
+      elseif n.type == "4" then
+        fourSound:play()
+
+      elseif n.type == "5" then
+        fiveSound:play()
+
+      elseif n.type == "6" then
+        sixSound:play()
+
+      elseif n.type == "7" then
+        sevenSound:play()
+
+      elseif n.type == "8" then
+        eightSound:play()
+
+      elseif n.type == "9" then
+        nineSound:play()
+
+      elseif n.type == "10" then
+        tenSound:play()
+      end
     end
   end
 
