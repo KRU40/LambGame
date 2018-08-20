@@ -22,7 +22,7 @@ function love.mousepressed(x, y, button, isTouch)
 
   if gameState == 1 then
     --Family bubble game chosen
-    if distanceBetween(200 + 94.5, love.graphics.getHeight()/2.5 + 94.5, love.mouse.getX(), love.mouse.getY()) < 94.5 then
+    if distanceBetween(midBubblePos * .33 + 10, bubbleYPos + 60, love.mouse.getX(), love.mouse.getY()) < 60 then
       buttonSound:play()
       clapSound:play()
       bFirstGame = false
@@ -33,7 +33,7 @@ function love.mousepressed(x, y, button, isTouch)
     end
 
     --Number bubble game chosen
-    if distanceBetween(400 + 94.5, love.graphics.getHeight()/2.5 + 94.5, love.mouse.getX(), love.mouse.getY()) < 94.5 then
+    if distanceBetween(midBubblePos * .66 + 10, bubbleYPos + 60, love.mouse.getX(), love.mouse.getY()) < 60 then
       buttonSound:play()
       clapSound:play()
       bFirstGame = false

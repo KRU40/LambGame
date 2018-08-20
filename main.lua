@@ -1,5 +1,5 @@
 function love.load()
-  love.window.setFullscreen(true)
+  --love.window.setFullscreen(true)
   --love.graphics.setBackgroundColor(1, .45, .5)
 
   --Include .lua files
@@ -8,21 +8,10 @@ function love.load()
   require('mainMenu')
   require('userInput')
 
-  --Loading Files
-  highScore = love.filesystem.read("highScore.txt")
-  welcomeSound = love.audio.newSource("bubbleGame.wav", "static")
-  buttonSound = love.audio.newSource("button.wav", "static")
-  clapSound = love.audio.newSource("claps.wav", "static")
-  calmMusic = love.audio.newSource("calm.mp3", "static")
-  menuBackground = love.graphics.newImage("menuBackground.png")
-  menuTitle = love.graphics.newImage("mainMenuTitle.png")
-
-  loadNumBubble()
-  loadFamilyBubble()
-
   --Declaring variables
-  winWidth = love.graphics.getWidth()
-  winHeight = love.graphics.getHeight()
+  pixelScale = love.window.getDPIScale( )
+  winWidth = love.graphics.getWidth() * pixelScale
+  winHeight = love.graphics.getHeight() * pixelScale
   exitButton = {}
   exitButton.size = 20
   exitButton.x = winWidth - exitButton.size
@@ -37,12 +26,17 @@ function love.load()
   bDirPos = true
   onGameBegin = false
 
+  --Loading Files
+  loadMainMenu()
+  loadNumBubble()
+  loadFamilyBubble()
+
   --Start Music
   calmMusic:play()
   welcomeSound:play()
 
   --Set Fonts
-  myFont = love.graphics.newFont(40)
+  myFont = love.graphics.newFont(18)
   largeFont = love.graphics.newFont(75)
 end
 
@@ -67,6 +61,7 @@ function love.update(dt)
     updateFamilyBubbles(dt)
   end
 
+  --Update number bubbles
   if gameState == 3 then
     love.graphics.setFont(myFont)
 
@@ -86,11 +81,12 @@ function love.draw()
     drawMainMenu()
   end
 
-
+  --Draw Family Bubbles
   if gameState == 2 then
     drawFamilyBubbles()
   end
 
+  --Draw Number Bubbles
   if gameState == 3 then
     drawNumBubble()
   end
