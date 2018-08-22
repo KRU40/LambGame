@@ -82,7 +82,7 @@ function updateNumBubbles(dt)
 
   for i=#numBubbles, 1, -1 do
     local n = numBubbles[i]
-    if n.popped == true or n.y < 0 - n.size then
+    if n.popped == true then
       table.remove(numBubbles, i)
 
       if n.type == "1" then
@@ -122,6 +122,10 @@ function updateNumBubbles(dt)
         tenSound:play()
       end
     end
+
+    if n.y < 0 - n.size then
+      table.remove(numBubbles, i)
+    end
   end
 
   --Update game timer.
@@ -145,8 +149,8 @@ end
 
 function drawNumBubble()
   love.graphics.setColor(1, 1, 1)
-  love.graphics.draw(numberBackgroundPic, 0, 0)
-
+  love.graphics.draw(numberBackgroundPic, 0, 0, nil, scaleX, scaleY)
+  drawClouds()
   for i, n in ipairs(numBubbles) do
     if n.type == "1" then
       love.graphics.setColor(1, 1, 1, .5)

@@ -3,31 +3,36 @@ function love.load()
   --love.graphics.setBackgroundColor(1, .45, .5)
 
   --Include .lua files
+  require('clouds')
   require('familyBubbles')
   require('numberBubbles')
   require('mainMenu')
   require('userInput')
+  --require('clouds')
 
   --Declaring variables
   pixelScale = love.window.getDPIScale( )
   winWidth = love.graphics.getWidth() * pixelScale
   winHeight = love.graphics.getHeight() * pixelScale
+  scaleX = winWidth/1920
+  scaleY = winHeight/1080
   exitButton = {}
   exitButton.size = 20
   exitButton.x = winWidth - exitButton.size
   exitButton.y = winHeight - exitButton.size
   score = 0
   timer = 30
-  bubbleSpawnTimer = 1
   endTimer = 0
   gameState = 1
   bFirstGame = true
   bReadyToClap = true
   bDirPos = true
   onGameBegin = false
+  bubbleSpawnTimer = 1
 
   --Loading Files
   loadMainMenu()
+  loadClouds()
   loadNumBubble()
   loadFamilyBubble()
 
@@ -42,6 +47,7 @@ end
 
 function love.update(dt)
   if gameState == 1 then
+    updateClouds(dt)
     if bFirstGame ~= true then
       if bReadyToClap == true then
         bReadyToClap = false
@@ -53,7 +59,7 @@ function love.update(dt)
   --Update Family bubble game and game timer TODO game timer new module
   if gameState == 2 then
     love.graphics.setFont(myFont)
-
+    updateClouds(dt)
     if onGameBegin == true then
       onGameBegin = false
     end
@@ -64,7 +70,7 @@ function love.update(dt)
   --Update number bubbles
   if gameState == 3 then
     love.graphics.setFont(myFont)
-
+    updateClouds(dt)
     if onGameBegin == true then
       onGameBegin = false
     end

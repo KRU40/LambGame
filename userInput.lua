@@ -46,8 +46,8 @@ function love.mousepressed(x, y, button, isTouch)
 
   --User has chosen to exit TODO find a better design for this
   if distanceBetween(exitButton.x, exitButton.y, love.mouse.getX(), love.mouse.getY()) < exitButton.size then
-    love.event.quit(exitstatus)
-    os.quit()
+    love.event.quit()
+    --os.quit()
     gameState = nil
   end
 end

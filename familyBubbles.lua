@@ -18,9 +18,9 @@ function loadFamilyBubble()
   auntyMegSound = love.audio.newSource("auntyMeg.wav", "static")
   --auntyEmSound = love.audio.newSource("auntyEm.wav", "static")
   grandpaRichSound = love.audio.newSource("grandpaRich.wav", "static")
-  --grandpaDrewSound = love.audio.newSource("grandpaDrew.wav", "static")
+  drewSound = love.audio.newSource("drew.wav", "static")
   grandmaAnnaSound = love.audio.newSource("grandmaAnna.wav", "static")
-  --grandmaDebbieSound = love.audio.newSource("grandmaDebbie.wav", "static")
+  debbieSound = love.audio.newSource("debbie.wav", "static")
   --grandmaShirleySound = love.audio.newSource("grandmaShirley.wav", "static")
   --grandmaBonnieSound = love.audio.newSource("grandmaBonnie.wav", "static")
   --grandmaBettySound = love.audio.newSource("grandmaBetty.wav", "static")
@@ -37,8 +37,8 @@ function loadFamilyBubble()
   dadaPic = love.graphics.newImage("dadaPic.jpg")
   yayaPic = love.graphics.newImage("yayaPic.png")
   papaPic = love.graphics.newImage("papaPic.png")
-  --debbiePic = love.graphics.newImage("debbiePic.png")
-  --drewPic = love.graphics.newImage("drewPic.png")
+  debbiePic = love.graphics.newImage("debbiePic.png")
+  drewPic = love.graphics.newImage("drewPic.png")
   richPic = love.graphics.newImage("richPic.png")
   annaPic = love.graphics.newImage("annaPic.png")
   --bonniePic = love.graphics.newImage("bonniePic.png")
@@ -60,9 +60,9 @@ function spawnFamilyBubble()
   bubble.size = 100
   bubble.x = math.random(100, love.graphics.getWidth() - bubble.size)
   bubble.y = love.graphics.getHeight() + bubble.size
-  bubble.speed = math.random(50, 400)
+  bubble.speed = math.random(50, 200)
   bubble.popped = false
-  randomType = math.random(1, 10)
+  randomType = math.random(1, 12)
 
   if randomType == 1 then
     bubble.type = "Mama"
@@ -94,6 +94,12 @@ function spawnFamilyBubble()
   elseif randomType == 10 then
     bubble.type = "Anna"
 
+  elseif randomType == 11 then
+    bubble.type = "Debbie"
+
+  elseif randomType == 12 then
+    bubble.type = "Andrew"
+
   else
     bubble.type = "Bubble"
   end
@@ -106,7 +112,7 @@ function updateFamilyBubbles(dt)
 
   if bubbleSpawnTimer <= 0 then
     spawnFamilyBubble()
-    bubbleSpawnTimer = .75
+    bubbleSpawnTimer = 1
   end
 
   for i,b in ipairs(famBubbles) do
@@ -146,6 +152,12 @@ function updateFamilyBubbles(dt)
 
         elseif b.type == "Anna" then
           grandmaAnnaSound:play()
+
+        elseif b.type == "Debbie" then
+          debbieSound:play()
+
+        elseif b.type == "Andrew" then
+          drewSound:play()
         end
       end
 
@@ -175,8 +187,10 @@ end
 
 function drawFamilyBubbles()
   love.graphics.setColor(1, 1, 1)
-  love.graphics.draw(familyBackgroundPic, 0, 0)
-
+  love.graphics.draw(familyBackgroundPic, 0, 0, nil, scaleX, scaleY)
+  love.graphics.setColor(1, 1, 1, .75)
+  drawClouds()
+  love.graphics.setColor(1, 1, 1)
   for i,b in ipairs(famBubbles) do
     if b.type == "Mama" then
       love.graphics.setColor(1, 1, 1, .5)
@@ -237,6 +251,18 @@ function drawFamilyBubbles()
       love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
       love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(annaPic, b.x + bubblePic:getWidth()/2.25, b.y - bubblePic:getHeight()/1.75, 0, .35)
+
+    elseif b.type == "Debbie" then
+      love.graphics.setColor(1, 1, 1, .5)
+      love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
+      love.graphics.setColor(1, 1, 1, .75)
+      love.graphics.draw(debbiePic, b.x + bubblePic:getWidth()/2.25, b.y - bubblePic:getHeight()/1.75, 0, .35)
+
+    elseif b.type == "Andrew" then
+      love.graphics.setColor(1, 1, 1, .5)
+      love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
+      love.graphics.setColor(1, 1, 1, .75)
+      love.graphics.draw(drewPic, b.x + bubblePic:getWidth()/2.25, b.y - bubblePic:getHeight()/1.75, 0, .35)
 
     else
       love.graphics.setColor(1, 1, 1, .5)
