@@ -30,7 +30,6 @@ function loadFamilyBubble()
 
   --Loading images
   familyBackgroundPic = love.graphics.newImage("familyBackground.png")
-  bubblePic = love.graphics.newImage("bubble.png")
   catPic = love.graphics.newImage("walle.jpg")
   lambPic = love.graphics.newImage("lambPic.jpg")
   mamaPic = love.graphics.newImage("mamaPic.jpg")
@@ -53,6 +52,8 @@ function loadFamilyBubble()
   --emPic = love.graphics.newImage("emPic.png")
   --calebPic = love.graphics.newImage("calebPic.png")
   --elliotPic = love.graphics.newImage("elliotPic.png")
+  transition = true
+  transTimer = 5
 end
 
 function spawnFamilyBubble()
@@ -108,6 +109,8 @@ function spawnFamilyBubble()
 end
 
 function updateFamilyBubbles(dt)
+  transTimer = transTimer - dt
+
   bubbleSpawnTimer = bubbleSpawnTimer - dt
 
   if bubbleSpawnTimer <= 0 then
@@ -186,7 +189,7 @@ function updateFamilyBubbles(dt)
 end
 
 function drawFamilyBubbles()
-  love.graphics.setColor(1, 1, 1)
+  love.graphics.setColor(1, 1, 1, alpha1)
   love.graphics.draw(familyBackgroundPic, 0, 0, nil, scaleX, scaleY)
   love.graphics.setColor(1, 1, 1, .75)
   drawClouds()

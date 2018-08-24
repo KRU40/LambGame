@@ -6,11 +6,14 @@ function love.load()
   require('clouds')
   require('familyBubbles')
   require('numberBubbles')
+  require('colorBubbles')
   require('mainMenu')
   require('userInput')
   --require('clouds')
 
   --Declaring variables
+  bubblePic = love.graphics.newImage("bubble.png")
+  osString = love.system.getOS()
   pixelScale = love.window.getDPIScale( )
   winWidth = love.graphics.getWidth() * pixelScale
   winHeight = love.graphics.getHeight() * pixelScale
@@ -35,8 +38,10 @@ function love.load()
   loadClouds()
   loadNumBubble()
   loadFamilyBubble()
+  loadColorBubbles()
 
   --Start Music
+  calmMusic:setLooping(true)
   calmMusic:play()
   welcomeSound:play()
 
@@ -46,6 +51,11 @@ function love.load()
 end
 
 function love.update(dt)
+  if gameState == 0 then
+    love.event.quit()
+  end
+
+  --updateUserInput()
   if gameState == 1 then
     updateClouds(dt)
     if bFirstGame ~= true then
@@ -77,6 +87,17 @@ function love.update(dt)
 
     updateNumBubbles(dt)
   end
+
+  --Update number bubbles
+  if gameState == 4 then
+    love.graphics.setFont(myFont)
+    updateClouds(dt)
+    if onGameBegin == true then
+      onGameBegin = false
+    end
+
+    updateColorBubbles(dt)
+  end
 end
 
 function love.draw()
@@ -95,6 +116,11 @@ function love.draw()
   --Draw Number Bubbles
   if gameState == 3 then
     drawNumBubble()
+  end
+
+  --Draw Number Bubbles
+  if gameState == 4 then
+    drawColorBubbles()
   end
 
     love.graphics.setColor(50, 0, 0)
