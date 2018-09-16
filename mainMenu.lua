@@ -10,7 +10,6 @@ function loadMainMenu()
   menuBackground = love.graphics.newImage("menuBackground.png")
   menuTitle = love.graphics.newImage("mainMenuTitle.png")
 
-
   --variables
   bubbleYPos = winHeight/2.5 --This may need to be refined to account for pixelScale
   midBubblePos = winWidth/2 * pixelScale
@@ -26,7 +25,6 @@ end
 function drawMainMenu()
   --love.graphics.setColor(1, 1, 1)
   love.graphics.draw(menuBackground, 0, 0, nil, scaleX, scaleY)
-  --love.graphics.draw(drawable, x, y, r, sx, sy, ox, oy, kx, ky)
   --love.graphics.print("High Score = " .. highScore, 0, 0)
   drawClouds()
   love.graphics.setFont(myFont)
@@ -39,7 +37,6 @@ function drawMainMenu()
       love.graphics.setColor(0, 0, 0)
       love.graphics.setFont(myFont)
       love.graphics.print("Family", b.x - b.size/3, b.y + 35, 0)
-      --love.graphics.print(text, x, y, r, sx, sy, ox, oy, kx, ky)
 
     elseif b.category == "number" then
       love.graphics.setColor(1, 1, 1, .55)

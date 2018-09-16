@@ -12,6 +12,7 @@ function loadNumBubble()
   eightPic = love.graphics.newImage("eight.png")
   ninePic = love.graphics.newImage("nine.png")
   tenPic = love.graphics.newImage("ten.png")
+
   oneSound = love.audio.newSource("one.wav", "static")
   twoSound = love.audio.newSource("two.wav", "static")
   lambTwoSound = love.audio.newSource("liamTwo.wav", "static")

@@ -79,6 +79,10 @@ function updateColorBubbles(dt)
             mamaSound:play()
         end
       end
+
+      if  c.y < 0 - c.size then
+        table.remove(colorBubbles, i)
+      end
     end
 
       --Update game timer.

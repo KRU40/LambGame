@@ -7,6 +7,7 @@ function love.load()
   require('familyBubbles')
   require('numberBubbles')
   require('colorBubbles')
+  require('shapeBubbles')
   require('mainMenu')
   require('userInput')
   --require('clouds')
@@ -39,11 +40,12 @@ function love.load()
   loadNumBubble()
   loadFamilyBubble()
   loadColorBubbles()
+  loadShapeBubbles()
 
   --Start Music
   calmMusic:setLooping(true)
   calmMusic:play()
-  welcomeSound:play()
+  --welcomeSound:play()
 
   --Set Fonts
   myFont = love.graphics.newFont(18)
@@ -98,6 +100,16 @@ function love.update(dt)
 
     updateColorBubbles(dt)
   end
+
+  if gameState == 5 then
+    love.graphics.setFont(myFont)
+    updateClouds(dt)
+    if onGameBegin == true then
+      onGameBegin = false
+    end
+
+    updateShapeBubbles(dt)
+  end
 end
 
 function love.draw()
@@ -123,8 +135,13 @@ function love.draw()
     drawColorBubbles()
   end
 
-    love.graphics.setColor(50, 0, 0)
-    love.graphics.circle("fill", exitButton.x, exitButton.y, exitButton.size)
+  --Draw Shape Bubbles
+  if gameState == 5 then
+    drawShapeBubbles()
+  end
+
+  love.graphics.setColor(50, 0, 0)
+  love.graphics.circle("fill", exitButton.x, exitButton.y, exitButton.size)
 end
 
 function distanceBetween(x1, y1, x2, y2)
