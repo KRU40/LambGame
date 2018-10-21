@@ -10,10 +10,13 @@ function love.load()
   require('shapeBubbles')
   require('mainMenu')
   require('userInput')
+  require('UI')
+  require('birds')
+
   --require('clouds')
 
   --Declaring variables
-  bubblePic = love.graphics.newImage("bubble.png")
+  bubblePic = love.graphics.newImage("bubbleOutline.png")
   osString = love.system.getOS()
   pixelScale = love.window.getDPIScale( )
   winWidth = love.graphics.getWidth() * pixelScale
@@ -41,6 +44,9 @@ function love.load()
   loadFamilyBubble()
   loadColorBubbles()
   loadShapeBubbles()
+  loadUI()
+  loadBirds()
+
 
   --Start Music
   calmMusic:setLooping(true)
@@ -59,6 +65,7 @@ function love.update(dt)
 
   --updateUserInput()
   if gameState == 1 then
+    updateBirds(dt)
     updateClouds(dt)
     if bFirstGame ~= true then
       if bReadyToClap == true then
@@ -71,6 +78,7 @@ function love.update(dt)
   --Update Family bubble game and game timer TODO game timer new module
   if gameState == 2 then
     love.graphics.setFont(myFont)
+    updateBirds(dt)
     updateClouds(dt)
     if onGameBegin == true then
       onGameBegin = false
@@ -82,6 +90,7 @@ function love.update(dt)
   --Update number bubbles
   if gameState == 3 then
     love.graphics.setFont(myFont)
+    updateBirds(dt)
     updateClouds(dt)
     if onGameBegin == true then
       onGameBegin = false
@@ -93,6 +102,7 @@ function love.update(dt)
   --Update number bubbles
   if gameState == 4 then
     love.graphics.setFont(myFont)
+    updateBirds(dt)
     updateClouds(dt)
     if onGameBegin == true then
       onGameBegin = false
@@ -103,6 +113,7 @@ function love.update(dt)
 
   if gameState == 5 then
     love.graphics.setFont(myFont)
+    updateBirds(dt)
     updateClouds(dt)
     if onGameBegin == true then
       onGameBegin = false
@@ -140,8 +151,8 @@ function love.draw()
     drawShapeBubbles()
   end
 
-  love.graphics.setColor(50, 0, 0)
-  love.graphics.circle("fill", exitButton.x, exitButton.y, exitButton.size)
+  --love.graphics.setColor(50, 0, 0)
+  --love.graphics.circle("fill", exitButton.x, exitButton.y, exitButton.size)
 end
 
 function distanceBetween(x1, y1, x2, y2)

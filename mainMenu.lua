@@ -6,9 +6,12 @@ function loadMainMenu()
   welcomeSound = love.audio.newSource("bubbleGame.wav", "static")
   buttonSound = love.audio.newSource("button.wav", "static")
   clapSound = love.audio.newSource("claps.wav", "static")
-  calmMusic = love.audio.newSource("calm.mp3", "static")
+  chirpSound = love.audio.newSource("chirp.wav", "static")
+  --calmMusic = love.audio.newSource("calm.mp3", "static")
+  calmMusic = love.audio.newSource("Fantasy Game Loop.wav", "static")
   menuBackground = love.graphics.newImage("menuBackground.png")
   menuTitle = love.graphics.newImage("mainMenuTitle.png")
+
 
   --variables
   bubbleYPos = winHeight/2.5 --This may need to be refined to account for pixelScale
@@ -24,11 +27,14 @@ end
 
 function drawMainMenu()
   --love.graphics.setColor(1, 1, 1)
-  love.graphics.draw(menuBackground, 0, 0, nil, scaleX, scaleY)
-  --love.graphics.print("High Score = " .. highScore, 0, 0)
+  love.graphics.draw(menuBackground, 0, 0, nil, scaleX*2, scaleY*2)
+  --love.graphics.print("High Score = " .. highScore, 0,x 0)
+
   drawClouds()
+  drawBirds()
   love.graphics.setFont(myFont)
-  love.graphics.draw(menuTitle, winWidth/2, winHeight/5, 0, .5, nil, 950/2)
+  love.graphics.draw(menuTitle, winWidth/2, winHeight/5, 0, .6, nil, 950/2)
+
 
   for i, b in ipairs (menuBubbles) do
     if b.category == "family" then

@@ -5,7 +5,7 @@ function loadFamilyBubble()
   --Loading sounds
   catSound = love.audio.newSource("meow.wav", "static")
   mamaSound = love.audio.newSource("mama.wav", "static")
-  dadaSound = love.audio.newSource("dada.wav", "static")
+  dadaSound = love.audio.newSource("daddySound.wav", "static")
   lambSound = love.audio.newSource("lamb.wav", "static")
   yayaSound = love.audio.newSource("yaya.wav", "static")
   papaSound = love.audio.newSource("papa.wav", "static")
@@ -29,7 +29,7 @@ function loadFamilyBubble()
   --elliotSound = love.audio.newSource("elliot.wav", "static")
 
   --Loading images
-  familyBackgroundPic = love.graphics.newImage("familyBackground.png")
+  --familyBackgroundPic = love.graphics.newImage("familyBackground.png")
   catPic = love.graphics.newImage("walle.jpg")
   lambPic = love.graphics.newImage("lambPic.jpg")
   mamaPic = love.graphics.newImage("mamaPic.jpg")
@@ -115,7 +115,7 @@ function updateFamilyBubbles(dt)
 
   if bubbleSpawnTimer <= 0 then
     spawnFamilyBubble()
-    bubbleSpawnTimer = 1
+    bubbleSpawnTimer = 2
   end
 
   for i,b in ipairs(famBubbles) do
@@ -128,39 +128,51 @@ function updateFamilyBubbles(dt)
         table.remove(famBubbles, i)
         if b.type == "Mama" then
           mamaSound:play()
+          bMamaPopped = true
 
         elseif b.type == "Walle" then
           catSound:play()
+          bWallePopped = true
 
         elseif b.type == "Dada" then
           dadaSound:play()
+          bDadaPopped = true
 
         elseif b.type == "Lamb" then
           lambSound:play()
+          bLambPopped = true
 
         elseif b.type == "Yaya" then
           yayaSound:play()
+          bYayaPopped = true
 
         elseif b.type == "Papa" then
           papaSound:play()
+          bPapaPopped = true
 
         elseif b.type == "Meg" then
           auntyMegSound:play()
+          bMegPopped = true
 
         elseif b.type == "Addy" then
           addysonSound:play()
+          bAddyPopped = true
 
         elseif b.type == "Rich" then
           grandpaRichSound:play()
+          bRichPopped = true
 
         elseif b.type == "Anna" then
           grandmaAnnaSound:play()
+          bAnnaPopped = true
 
         elseif b.type == "Debbie" then
           debbieSound:play()
+          bDebbiePopped = true
 
         elseif b.type == "Andrew" then
           drewSound:play()
+          bDrewPopped = true
         end
       end
 
@@ -175,6 +187,7 @@ function updateFamilyBubbles(dt)
    end
 
    if timer <= 0 then
+     resetFamBools()
      timer = 0
      bReadyToClap = true
      gameState = 1
@@ -189,86 +202,89 @@ function updateFamilyBubbles(dt)
 end
 
 function drawFamilyBubbles()
-  love.graphics.setColor(1, 1, 1, alpha1)
-  love.graphics.draw(familyBackgroundPic, 0, 0, nil, scaleX, scaleY)
+  --l--ove.graphics.setColor(1, 1, 1, alpha1)
+--  love.graphics.draw(menuBackground, 0, 0, nil, scaleX, scaleY)
+love.graphics.draw(menuBackground, 0, 0, nil, scaleX*2, scaleY*2)
   love.graphics.setColor(1, 1, 1, .75)
+  drawUI()
   drawClouds()
+  drawBirds()
   love.graphics.setColor(1, 1, 1)
   for i,b in ipairs(famBubbles) do
     if b.type == "Mama" then
-      love.graphics.setColor(1, 1, 1, .5)
+      love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
       love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(mamaPic, b.x + bubblePic:getWidth()/2.75, b.y - bubblePic:getHeight()/1.75, 0, .2)
 
     elseif b.type == "Walle" then
-      love.graphics.setColor(1, 1, 1, .5)
+      love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
       love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(catPic, b.x + bubblePic:getWidth()/2.75, b.y - bubblePic:getHeight()/1.75, 0, .05)
 
     elseif b.type == "Dada" then
-      love.graphics.setColor(1, 1, 1, .5)
+      love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
       love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(dadaPic, b.x + bubblePic:getWidth()/2.5, b.y - bubblePic:getHeight()/1.75, 0, .05)
 
     elseif b.type == "Lamb" then
-      love.graphics.setColor(1, 1, 1, .5)
+      love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
       love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(lambPic, b.x + bubblePic:getWidth()/2.25, b.y - bubblePic:getHeight()/1.75, 0, .17)
 
     elseif b.type == "Yaya" then
-      love.graphics.setColor(1, 1, 1, .5)
+      love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
       love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(yayaPic, b.x + bubblePic:getWidth()/2.25, b.y - bubblePic:getHeight()/1.75, 0, .07)
 
     elseif b.type == "Papa" then
-      love.graphics.setColor(1, 1, 1, .5)
+      love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
       love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(papaPic, b.x + bubblePic:getWidth()/2.25, b.y - bubblePic:getHeight()/1.75, 0, .04)
 
     elseif b.type == "Meg" then
-      love.graphics.setColor(1, 1, 1, .5)
+      love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
       love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(megPic, b.x + bubblePic:getWidth()/2.25, b.y - bubblePic:getHeight()/1.75, 0, .35)
 
     elseif b.type == "Addy" then
-      love.graphics.setColor(1, 1, 1, .5)
+      love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
       love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(addyPic, b.x + bubblePic:getWidth()/2.25, b.y - bubblePic:getHeight()/1.75, 0, .35)
 
     elseif b.type == "Rich" then
-      love.graphics.setColor(1, 1, 1, .5)
+      love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
       love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(richPic, b.x + bubblePic:getWidth()/2.25, b.y - bubblePic:getHeight()/1.75, 0, .35)
 
     elseif b.type == "Anna" then
-      love.graphics.setColor(1, 1, 1, .5)
+      love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
       love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(annaPic, b.x + bubblePic:getWidth()/2.25, b.y - bubblePic:getHeight()/1.75, 0, .35)
 
     elseif b.type == "Debbie" then
-      love.graphics.setColor(1, 1, 1, .5)
+      love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
       love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(debbiePic, b.x + bubblePic:getWidth()/2.25, b.y - bubblePic:getHeight()/1.75, 0, .35)
 
     elseif b.type == "Andrew" then
-      love.graphics.setColor(1, 1, 1, .5)
+      love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
       love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(drewPic, b.x + bubblePic:getWidth()/2.25, b.y - bubblePic:getHeight()/1.75, 0, .35)
 
     else
-      love.graphics.setColor(1, 1, 1, .5)
+      love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(bubblePic, b.x, b.y-100, 0, 1.75)
     end
   end

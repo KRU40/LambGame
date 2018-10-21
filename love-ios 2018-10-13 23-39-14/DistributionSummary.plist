@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>love-ios.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>armv7</string>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>15322F149DDD3ADC575AEDCAF3A689B0F8E02512</string>
+				<key>dateExpires</key>
+				<string>8/18/19</string>
+				<key>type</key>
+				<string>iOS Development</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>2VPZSM936M.bubble.game541</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>2VPZSM936M</string>
+				<key>get-task-allow</key>
+				<true/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>2VPZSM936M.bubble.game541</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>Bubble Game.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>0029f165-5a3a-4a2e-ab99-762e49d275c7</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: bubble.game541</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>2VPZSM936M</string>
+				<key>name</key>
+				<string>Kyle Umbenhower</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

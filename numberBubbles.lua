@@ -88,8 +88,10 @@ function updateNumBubbles(dt)
 
       if n.type == "1" then
         oneSound:play()
+        bOnePopped = true
 
       elseif n.type == "2" then
+        bTwoPopped = true
         local randomTwo = math.random(1, 2)
         if randomTwo == 1 then
           twoSound:play()
@@ -100,27 +102,35 @@ function updateNumBubbles(dt)
 
       elseif n.type == "3" then
         threeSound:play()
+        bThreePopped = true
 
       elseif n.type == "4" then
         fourSound:play()
+        bFourPopped = true
 
       elseif n.type == "5" then
         fiveSound:play()
+        bFivePopped = true
 
       elseif n.type == "6" then
         sixSound:play()
+        bSixPopped = true
 
       elseif n.type == "7" then
         sevenSound:play()
+        bSevenPopped = true
 
       elseif n.type == "8" then
         eightSound:play()
+        bEightPopped = true
 
       elseif n.type == "9" then
         nineSound:play()
+        bNinePopped = true
 
       elseif n.type == "10" then
         tenSound:play()
+        bTenPopped = true
       end
     end
 
@@ -135,6 +145,7 @@ function updateNumBubbles(dt)
   end
 
   if timer <= 0 then
+    resetNumBools()
     timer = 0
     bReadyToClap = true
     gameState = 1
@@ -151,7 +162,9 @@ end
 function drawNumBubble()
   love.graphics.setColor(1, 1, 1)
   love.graphics.draw(numberBackgroundPic, 0, 0, nil, scaleX, scaleY)
+  drawUI()
   drawClouds()
+  drawBirds()
   for i, n in ipairs(numBubbles) do
     if n.type == "1" then
       love.graphics.setColor(1, 1, 1, .5)

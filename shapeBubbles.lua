@@ -75,6 +75,7 @@ function drawShapeBubbles()
   love.graphics.setColor(1, .7, .7)
   love.graphics.draw(numberBackgroundPic, 0, 0, nil, scaleX, scaleY)
   drawClouds()
+  drawBirds()
   love.graphics.setColor(1, 1, 1, .6)
   for i,b in ipairs(shapeBubbles) do
     if b.type == "Square" then

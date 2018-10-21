@@ -109,6 +109,7 @@ function updateColorBubbles(dt)
       love.graphics.draw(numberBackgroundPic, 0, 0, nil, scaleX, scaleY)
   --    love.graphics.setColor(1, 1, 1, .75)
       drawClouds()
+      drawBirds()
       love.graphics.setColor(1, 1, 1)
       for i,b in ipairs(colorBubbles) do
         if b.type == "Blue" then
