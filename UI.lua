@@ -310,4 +310,97 @@ function drawUI()
         love.graphics.draw(tenPic, firstPosNum + bubbleUIScale * 10.05, 20 * pixelScale, 0, .2)
       end
     end
-  end
+
+    if gameState == 4 then
+      if bWhitePopped == false then
+        love.graphics.setColor(1, 1, 1, .5)
+        love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale, 20 * pixelScale, 0, .5)
+
+      else
+        love.graphics.setColor(1, 1, 1, .7)
+        love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale, 20 * pixelScale, 0, .5)
+      end
+
+      if bYellowPopped == false then
+        love.graphics.setColor(1, 1, .3, .5)
+        love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale * 2, 20 * pixelScale, 0, .5)
+
+      else
+        love.graphics.setColor(1, 1, .3, 1)
+        love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale * 2, 20 * pixelScale, 0, .5)
+      end
+
+      if bBluePopped == false then
+        love.graphics.setColor(0, 0, 1, .5)
+        love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale * 4, 20 * pixelScale, 0, .5)
+
+      else
+        love.graphics.setColor(0, 0, 1, 1)
+        love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale * 4, 20 * pixelScale, 0, .5)
+      end
+
+      if bGreenPopped == false then
+        love.graphics.setColor(0, 1, 0, .5)
+        love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale * 3, 20 * pixelScale, 0, .5)
+
+      else
+        love.graphics.setColor(0, 1, 0, 1)
+        love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale * 3, 20 * pixelScale, 0, .5)
+      end
+
+      if bOrangePopped == false then
+        love.graphics.setColor(1, .5, 0, .5)
+        love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale * 5, 20 * pixelScale, 0, .5)
+
+      else
+        love.graphics.setColor(1, .5, 0, 1)
+        love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale * 5, 20 * pixelScale, 0, .5)
+      end
+
+      if bRedPopped == false then
+        love.graphics.setColor(1, 0, 0, .5)
+        love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale * 6, 20 * pixelScale, 0, .5)
+
+      else
+        love.graphics.setColor(1, 0, 0, 1)
+        love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale * 6, 20 * pixelScale, 0, .5)
+      end
+
+      if bPurplePopped == false then
+        love.graphics.setColor(.6, .2, .9, .5)
+        love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale * 7, 20 * pixelScale, 0, .5)
+
+      else
+        love.graphics.setColor(.6, .2, .9, 1)
+        love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale * 7, 20 * pixelScale, 0, .5)
+      end
+
+      if bPinkPopped == false then
+        love.graphics.setColor(1, .5, .8, .5)
+        love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale * 8, 20 * pixelScale, 0, .5)
+
+      else
+        love.graphics.setColor(1, .5, .8, 1)
+        love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale * 8, 20 * pixelScale, 0, .5)
+      end
+
+      if bBrownPopped == false then
+        love.graphics.setColor(.7, .4, .0, .5)
+        love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale * 9, 20 * pixelScale, 0, .5)
+
+      else
+        love.graphics.setColor(.7, .4, .0, 1)
+        love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale * 9, 20 * pixelScale, 0, .5)
+      end
+
+      if bBlackPopped == false then
+        love.graphics.setColor(0, 0, 0, .5)
+        love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale * 10, 20 * pixelScale, 0, .5)
+
+      else
+        love.graphics.setColor(0, 0, 0, 1)
+        love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale * 10, 20 * pixelScale, 0, .5)
+      end
+
+   end
+end

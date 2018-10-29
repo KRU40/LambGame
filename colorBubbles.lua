@@ -1,7 +1,27 @@
 colorBubbles = {}
 
 function loadColorBubbles()
+  colorBackgroundPic = love.graphics.newImage("colorBackground.png")
+  greenSound = love.audio.newSource("green.wav", "static")
+  whiteSound = love.audio.newSource("white.wav", "static")
+  blueSound = love.audio.newSource("blue.wav", "static")
+  yellowSound = love.audio.newSource("yellow.wav", "static")
+  orangeSound = love.audio.newSource("orange.wav", "static")
+  pinkSound = love.audio.newSource("pink.wav", "static")
+  purpleSound = love.audio.newSource("purple.wav", "static")
+  blackSound = love.audio.newSource("black.wav", "static")
+  brownSound = love.audio.newSource("brown.wav", "static")
+  redSound = love.audio.newSource("red.wav", "static")
   colorBubbleSpawnTimer = 0
+  bBrownPopped = false
+  bWhitePopped = false
+  bGreenPopped = false
+  bBluePopped = false
+  bBlackPopped = false
+  bOrangePopped = false
+  bYellowPopped = false
+  bPurplePopped = false
+  bPinkPopped = false
 end
 
 function spawnColorBubble()
@@ -43,7 +63,7 @@ function updateColorBubbles(dt)
 
   if colorBubbleSpawnTimer <= 0 then
     spawnColorBubble()
-    colorBubbleSpawnTimer = 1
+    colorBubbleSpawnTimer = 2
   end
 
   for i, c in ipairs(colorBubbles) do
@@ -56,27 +76,35 @@ function updateColorBubbles(dt)
     if c.popped == true and c ~= nil then
       table.remove(colorBubbles, i)
         if c.type == "Blue" then
-          mamaSound:play()
+          blueSound:play()
+          bBluePopped = true
         elseif c.type == "Green" then
-          mamaSound:play()
+          greenSound:play()
+          bGreenPopped = true
         elseif c.type == "Orange" then
-          mamaSound:play()
+          orangeSound:play()
+          bOrangePopped = true
         elseif c.type == "Yellow" then
-          mamaSound:play()
+          yellowSound:play()
+          bYellowPopped = true
         elseif c.type == "Pink" then
-            mamaSound:play()
+          pinkSound:play()
+          bPinkPopped = true
         elseif c.type == "Purple" then
-            mamaSound:play()
+          purpleSound:play()
+          bPurplePopped = true
         elseif c.type == "Black" then
-            mamaSound:play()
+          blackSound:play()
+          bBlackPopped = true
         elseif c.type == "Brown" then
-            mamaSound:play()
+          brownSound:play()
+          bBrownPopped = true
         elseif c.type == "White" then
-            mamaSound:play()
-          elseif c.type == "Red" then
-              mamaSound:play()
-        elseif c.type == "Orange" then
-            mamaSound:play()
+          whiteSound:play()
+          bWhitePopped = true
+        elseif c.type == "Red" then
+          redSound:play()
+          bRedPopped = true
         end
       end
 
@@ -105,9 +133,9 @@ function updateColorBubbles(dt)
   end
 
   function drawColorBubbles()
-      love.graphics.setColor(1, .5, .5)
-      love.graphics.draw(numberBackgroundPic, 0, 0, nil, scaleX, scaleY)
-  --    love.graphics.setColor(1, 1, 1, .75)
+      love.graphics.setColor(1, 1, 1)
+      love.graphics.draw(colorBackgroundPic, 0, 0, nil, scaleX, scaleY)
+      drawUI()
       drawClouds()
       drawBirds()
       love.graphics.setColor(1, 1, 1)
@@ -121,11 +149,11 @@ function updateColorBubbles(dt)
           love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
           love.graphics.setColor(1, 1, 1, .75)
         elseif b.type == "Orange" then
-          love.graphics.setColor(1, .6, .3)
+          love.graphics.setColor(1, .5, 0)
           love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
           love.graphics.setColor(1, 1, 1, .75)
         elseif b.type == "Yellow" then
-          love.graphics.setColor(1, 1, 0)
+          love.graphics.setColor(1, 1, .3)
           love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
           love.graphics.setColor(1, 1, 1, .75)
         elseif b.type == "Pink" then
@@ -141,11 +169,11 @@ function updateColorBubbles(dt)
           love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
           love.graphics.setColor(1, 1, 1, .75)
         elseif b.type == "Brown" then
-          love.graphics.setColor(1, .75, .75)
+          love.graphics.setColor(.7, .4, 0)
           love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
           love.graphics.setColor(1, 1, 1, .75)
         elseif b.type == "White" then
-          love.graphics.setColor(1, 1, 1)
+          love.graphics.setColor(1, 1, 1, .7)
           love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
           love.graphics.setColor(1, 1, 1, .75)
         elseif b.type == "Orange" then

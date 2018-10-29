@@ -99,7 +99,7 @@ function love.update(dt)
     updateNumBubbles(dt)
   end
 
-  --Update number bubbles
+  --Update color bubbles
   if gameState == 4 then
     love.graphics.setFont(myFont)
     updateBirds(dt)

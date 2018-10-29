@@ -1,7 +1,8 @@
 birds = {}
-birdSpawnTimer = 1
+birdSpawnTimer = 10
 birdFlapTimer = .1
 wingPos = 1
+bAppStart = true
 
 function loadBirds()
   birdPic1 = love.graphics.newImage("frame-1.png")
@@ -9,6 +10,10 @@ function loadBirds()
 end
 
 function updateBirds(dt)
+  if bAppStart == true and birdSpawnTimer > 1 then
+    birdSpawnTimer = 2
+    bAppStart = false
+  end
 
   birdFlapTimer = birdFlapTimer - dt
   if birdFlapTimer <= 0 then
@@ -19,7 +24,7 @@ function updateBirds(dt)
   birdSpawnTimer = birdSpawnTimer - dt
   if birdSpawnTimer <= 0 then
     spawnBird()
-    birdSpawnTimer = 10
+    birdSpawnTimer = 15
   end
 
   for i, b in ipairs(birds) do
@@ -31,7 +36,7 @@ function updateBirds(dt)
     if b.popped == true then
       table.remove(birds, i)
     end
-    
+
     if b.x > winWidth + 500 then
       table.remove(birds, i)
     end
@@ -52,10 +57,16 @@ end
 
 function spawnBird()
   local bird = {}
-  bird.speed = 100
+  bird.speed = 125
   bird.scale = math.random(.15)
-  bird.x = -500 * pixelScale * bird.scale
-  bird.y = math.random(100, winHeight-100) * pixelScale
+  bird.x = -100 * pixelScale * bird.scale
+  if gameState == 1 then
+    bird.y = winHeight*.65
+
+  else
+    bird.y = math.random(100, winHeight-100) * pixelScale
+  end
+
   table.insert(birds, bird)
 end
 
