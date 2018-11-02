@@ -1,5 +1,6 @@
 
 function love.mousepressed(x, y, button, isTouch)
+  love.system.vibrate(.2)
   if button == 1 and gameState == 1 then
     for i, b in ipairs(birds) do
       if distanceBetween(b.x + 50, b.y + 45, x, y) < 50 then
@@ -137,6 +138,7 @@ function love.mousepressed(x, y, button, isTouch)
 end--]]
 
 function love.touchpressed(id, x, y, dx, dy, pressure)
+  love.system.vibrate(.2)
   if gameState == 1 then
     for i, b in ipairs(birds) do
       if distanceBetween(b.x, b.y, x, y) < 50 then
@@ -282,6 +284,7 @@ function love.touchpressed(id, x, y, dx, dy, pressure)
         score = score + 2
         chirpSound:play()
         b.popped = true
+        love.system.vibrate(.2)
       end
     end
   end
@@ -300,6 +303,7 @@ function checkBird()
       score = score + 2
       buttonSound:play()
       b.popped = true
+      love.system.vibrate(.2)
     end
   end
 end

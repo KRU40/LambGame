@@ -38,35 +38,35 @@ function drawMainMenu()
 
   for i, b in ipairs (menuBubbles) do
     if b.category == "family" then
-      love.graphics.setColor(1, 1, 1, .55)
+      love.graphics.setColor(1, 1, 1, .8)
       love.graphics.draw(bubblePic, b.x - b.size/2, b.y, 0, b.scale)
       love.graphics.setColor(0, 0, 0)
       love.graphics.setFont(myFont)
       love.graphics.print("Family", b.x - b.size/3, b.y + 35, 0)
 
     elseif b.category == "number" then
-      love.graphics.setColor(1, 1, 1, .55)
+      love.graphics.setColor(1, 1, 1, .8)
       love.graphics.draw(bubblePic, b.x - b.size/2, b.y, 0, b.scale)
       love.graphics.setColor(0, 0, 0)
       love.graphics.setFont(myFont)
       love.graphics.print("Numbers", b.x - b.size/2.2, b.y + 35)
 
     elseif b.category == "color" then
-      love.graphics.setColor(1, 1, 1, .55)
+      love.graphics.setColor(1, 1, 1, .8)
       love.graphics.draw(bubblePic, b.x - b.size/2, b.y, 0, b.scale)
       love.graphics.setColor(0, 0, 0)
       love.graphics.setFont(myFont)
       love.graphics.print("Color", b.x - b.size/3.5, b.y + 35)
 
     elseif b.category == "animals" then
-      love.graphics.setColor(1, 1, 1, .55)
+      love.graphics.setColor(1, 1, 1, .8)
       love.graphics.draw(bubblePic, b.x - b.size/2, b.y, 0, b.scale)
       love.graphics.setColor(0, 0, 0)
       love.graphics.setFont(myFont)
       love.graphics.print("Animals", b.x - b.size/2.5, b.y + 35)
 
     elseif b.category == "shapes" then
-      love.graphics.setColor(1, 1, 1, .55)
+      love.graphics.setColor(1, 1, 1, .8)
       love.graphics.draw(bubblePic, b.x - b.size/2, b.y, 0, b.scale)
       love.graphics.setColor(0, 0, 0)
       love.graphics.setFont(myFont)

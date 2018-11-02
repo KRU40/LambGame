@@ -16,7 +16,7 @@ function love.load()
   --require('clouds')
 
   --Declaring variables
-  bubblePic = love.graphics.newImage("bubbleOutline.png")
+  bubblePic = love.graphics.newImage("bubbleImage.png")
   osString = love.system.getOS()
   pixelScale = love.window.getDPIScale( )
   winWidth = love.graphics.getWidth() * pixelScale

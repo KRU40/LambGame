@@ -314,19 +314,19 @@ function drawUI()
     if gameState == 4 then
       if bWhitePopped == false then
         love.graphics.setColor(1, 1, 1, .5)
-        love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale, 20 * pixelScale, 0, .5)
+        love.graphics.draw(whiteBubble, firstPosNum + bubbleUIScale, 20 * pixelScale, 0, .5)
 
       else
-        love.graphics.setColor(1, 1, 1, .7)
-        love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale, 20 * pixelScale, 0, .5)
+        love.graphics.setColor(1, 1, 1, 1)
+        love.graphics.draw(whiteBubble, firstPosNum + bubbleUIScale, 20 * pixelScale, 0, .5)
       end
 
       if bYellowPopped == false then
-        love.graphics.setColor(1, 1, .3, .5)
+        love.graphics.setColor(1, .85, 0, .5)
         love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale * 2, 20 * pixelScale, 0, .5)
 
       else
-        love.graphics.setColor(1, 1, .3, 1)
+        love.graphics.setColor(1, .85, 0, 1)
         love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale * 2, 20 * pixelScale, 0, .5)
       end
 
@@ -376,7 +376,7 @@ function drawUI()
       end
 
       if bPinkPopped == false then
-        love.graphics.setColor(1, .5, .8, .5)
+        love.graphics.setColor(1, .5, .9, .5)
         love.graphics.draw(bubblePic, firstPosNum + bubbleUIScale * 8, 20 * pixelScale, 0, .5)
 
       else
