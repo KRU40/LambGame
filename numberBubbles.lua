@@ -32,7 +32,7 @@ function spawnNumBubble()
   numBubble.size = 100
   numBubble.x = math.random(100, love.graphics.getWidth() - numBubble.size)
   numBubble.y = love.graphics.getHeight() + numBubble.size
-  numBubble.speed = math.random(100, 300)
+  numBubble.speed = math.random(100, 150)
   numBubble.popped = false
   randomNumBubble = math.random(1, 10)
 
@@ -74,7 +74,7 @@ function updateNumBubbles(dt)
   bubbleNumSpawnTimer = bubbleNumSpawnTimer - dt
   if bubbleNumSpawnTimer <= 0 then
     spawnNumBubble()
-    bubbleNumSpawnTimer = 1
+    bubbleNumSpawnTimer = 2
   end
 
   for i, n in ipairs(numBubbles) do
@@ -145,17 +145,21 @@ function updateNumBubbles(dt)
   end
 
   if timer <= 0 then
-    resetNumBools()
-    timer = 0
-    bReadyToClap = true
-    gameState = 1
-    if score > tonumber(highScore) then
-      love.filesystem.write('highScore.txt', score)
-    end
+    resetNumber()
+  end
+end
 
-    for i=#numBubbles, 1, -1 do
-      table.remove(numBubbles, i)
-    end
+function resetNumber()
+  resetNumBools()
+  timer = 0
+  bReadyToClap = true
+  gameState = 1
+  if score > tonumber(highScore) then
+    love.filesystem.write('highScore.txt', score)
+  end
+
+  for i=#numBubbles, 1, -1 do
+    table.remove(numBubbles, i)
   end
 end
 
@@ -165,6 +169,7 @@ function drawNumBubble()
   drawUI()
   drawClouds()
   drawBirds()
+
   for i, n in ipairs(numBubbles) do
     if n.type == "1" then
       love.graphics.setColor(1, 1, 1, .5)
@@ -226,9 +231,10 @@ function drawNumBubble()
       love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(tenPic, n.x + bubblePic:getWidth()/2.75, n.y - bubblePic:getHeight()/1.75, 0, .5)
     end
+      drawQuitButton()
   end
 
   love.graphics.setColor(0, .73, .95)
-  love.graphics.print("Score = " .. score, 0, 0)
-  love.graphics.printf("Time: " .. math.ceil(timer), 0, 0, love.graphics.getWidth(), "right")
+--  love.graphics.print("Score = " .. score, 0, 0)
+--  love.graphics.printf("Time: " .. math.ceil(timer), 0, 0, love.graphics.getWidth(), "right")
 end

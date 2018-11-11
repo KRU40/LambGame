@@ -6,6 +6,7 @@ function loadShapeBubbles()
   --circle = love.graphics.newImage("circle.png")
   triangle = love.graphics.newImage("triangle.png")
   rectangle = love.graphics.newImage("rectangle.png")
+  treeTest = love.graphics.newImage("test128.png")
 
   circleSound = love.audio.newSource("circle.wav", "static")
   recSound = love.audio.newSource("rectangle.wav", "static")
@@ -69,6 +70,28 @@ function updateShapeBubbles(dt)
       table.remove(shapeBubbles, i)
     end
   end
+
+  --Update game timer.
+  if timer > 0 then
+    timer = timer - dt
+  end
+
+  if timer <= 0 then
+    resetShape()
+  end
+end
+
+function resetShape()
+  timer = 0
+  bReadyToClap = true
+  gameState = 1
+  if score > tonumber(highScore) then
+    love.filesystem.write('highScore.txt', score)
+  end
+
+  for i=#shapeBubbles, 1, -1 do
+    table.remove(shapeBubbles, i)
+  end
 end
 
 function drawShapeBubbles()
@@ -76,6 +99,8 @@ function drawShapeBubbles()
   love.graphics.draw(numberBackgroundPic, 0, 0, nil, scaleX, scaleY)
   drawClouds()
   drawBirds()
+  love.graphics.setColor(1, 1, 1, 1)
+  --love.graphics.draw(treeTest, 100, winHeight/2-128, nil, 3)
   love.graphics.setColor(1, 1, 1, .6)
   for i,b in ipairs(shapeBubbles) do
     if b.type == "Square" then
@@ -92,5 +117,8 @@ function drawShapeBubbles()
       love.graphics.setColor(1, 1, 1, .6)
     end
   end
+
+  drawQuitButton()
   love.graphics.setColor(1, 1, 1)
+  --love.graphics.printf("Time: " .. math.ceil(timer), 0, 0, love.graphics.getWidth(), "right")
 end

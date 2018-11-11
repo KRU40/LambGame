@@ -12,11 +12,12 @@ function love.load()
   require('userInput')
   require('UI')
   require('birds')
+  require('quitButton')
 
   --require('clouds')
 
   --Declaring variables
-  bubblePic = love.graphics.newImage("bubbleImage.png")
+  bubblePic = love.graphics.newImage("bubbleImageOut.png")
   osString = love.system.getOS()
   pixelScale = love.window.getDPIScale( )
   winWidth = love.graphics.getWidth() * pixelScale
@@ -46,11 +47,13 @@ function love.load()
   loadShapeBubbles()
   loadUI()
   loadBirds()
+  loadQuitButton()
 
 
   --Start Music
   calmMusic:setLooping(true)
   calmMusic:play()
+  calmMusic:setVolume(.45)
   --welcomeSound:play()
 
   --Set Fonts
@@ -67,6 +70,8 @@ function love.update(dt)
   if gameState == 1 then
     updateBirds(dt)
     updateClouds(dt)
+    updateQuitButton(dt)
+
     if bFirstGame ~= true then
       if bReadyToClap == true then
         bReadyToClap = false
@@ -80,6 +85,7 @@ function love.update(dt)
     love.graphics.setFont(myFont)
     updateBirds(dt)
     updateClouds(dt)
+    updateQuitButton(dt)
     if onGameBegin == true then
       onGameBegin = false
     end
@@ -92,6 +98,7 @@ function love.update(dt)
     love.graphics.setFont(myFont)
     updateBirds(dt)
     updateClouds(dt)
+    updateQuitButton(dt)
     if onGameBegin == true then
       onGameBegin = false
     end
@@ -104,6 +111,7 @@ function love.update(dt)
     love.graphics.setFont(myFont)
     updateBirds(dt)
     updateClouds(dt)
+    updateQuitButton(dt)
     if onGameBegin == true then
       onGameBegin = false
     end
@@ -115,6 +123,7 @@ function love.update(dt)
     love.graphics.setFont(myFont)
     updateBirds(dt)
     updateClouds(dt)
+    updateQuitButton(dt)
     if onGameBegin == true then
       onGameBegin = false
     end

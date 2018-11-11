@@ -121,16 +121,20 @@ function updateColorBubbles(dt)
       end
 
       if timer <= 0 then
-        timer = 0
-        bReadyToClap = true
-        gameState = 1
-        if score > tonumber(highScore) then
-          love.filesystem.write('highScore.txt', score)
-        end
+        resetColor()
+      end
+  end
 
-        for i=#colorBubbles, 1, -1 do
-          table.remove(colorBubbles, i)
-        end
+  function resetColor()
+    timer = 0
+    bReadyToClap = true
+    gameState = 1
+    if score > tonumber(highScore) then
+      love.filesystem.write('highScore.txt', score)
+    end
+
+    for i=#colorBubbles, 1, -1 do
+      table.remove(colorBubbles, i)
     end
   end
 
@@ -139,9 +143,10 @@ function updateColorBubbles(dt)
       love.graphics.draw(colorBackgroundPic, 0, 0, nil, scaleX, scaleY)
       drawUI()
       love.graphics.setColor(1, 1, 1, .5)
-      love.graphics.draw(rainbow, winWidth/2, winHeight/2, nil, scaleX*1.5, scaleY*1.5)
+      love.graphics.draw(rainbow, winWidth/2, winHeight/3, nil, scaleX*1.5, scaleY*1.5)
       drawClouds()
       drawBirds()
+      drawQuitButton()
       love.graphics.setColor(1, 1, 1)
       for i,b in ipairs(colorBubbles) do
         if b.type == "Blue" then

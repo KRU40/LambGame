@@ -12,24 +12,20 @@ function loadFamilyBubble()
   addysonSound = love.audio.newSource("Addyson.wav", "static")
   grandmaAnnaSound = love.audio.newSource("grandmaAnna.wav", "static")
   --addySound = love.audio.newSource("addy.wav", "static")
-  --maxSound = love.audio.newSource("max.wav", "static")
-  --elijahSound = love.audio.newSource("elijah.wav", "static")
-  --harperSound = love.audio.newSource("harper.wav", "static")
+  maxSound = love.audio.newSource("max.wav", "static")
+  elijahSound = love.audio.newSource("Elijah.wav", "static")
+  harperSound = love.audio.newSource("harper.wav", "static")
   auntyMegSound = love.audio.newSource("auntyMeg.wav", "static")
-  --auntyEmSound = love.audio.newSource("auntyEm.wav", "static")
+  emSound = love.audio.newSource("AuntieEm.wav", "static")
   grandpaRichSound = love.audio.newSource("grandpaRich.wav", "static")
   drewSound = love.audio.newSource("drew.wav", "static")
   grandmaAnnaSound = love.audio.newSource("grandmaAnna.wav", "static")
   debbieSound = love.audio.newSource("debbie.wav", "static")
-  --grandmaShirleySound = love.audio.newSource("grandmaShirley.wav", "static")
-  --grandmaBonnieSound = love.audio.newSource("grandmaBonnie.wav", "static")
-  --grandmaBettySound = love.audio.newSource("grandmaBetty.wav", "static")
-  --grandmaTanakaSound = love.audio.newSource("grandmaTanaka.wav", "static")
-  --calebSound = love.audio.newSource("caleb.wav", "static")
-  --elliotSound = love.audio.newSource("elliot.wav", "static")
+  calebSound = love.audio.newSource("Caleb.wav", "static")
 
   --Loading images
-  --familyBackgroundPic = love.graphics.newImage("familyBackground.png")
+  familyTree = love.graphics.newImage("familytree.png")
+  familyBackgroundPic = love.graphics.newImage("familyBackground.png")
   catPic = love.graphics.newImage("walle.jpg")
   lambPic = love.graphics.newImage("lambPic.jpg")
   mamaPic = love.graphics.newImage("mamaPic.jpg")
@@ -40,18 +36,15 @@ function loadFamilyBubble()
   drewPic = love.graphics.newImage("drewPic.png")
   richPic = love.graphics.newImage("richPic.png")
   annaPic = love.graphics.newImage("annaPic.png")
-  --bonniePic = love.graphics.newImage("bonniePic.png")
-  --elijahPic = love.graphics.newImage("elijahPic.png")
+  elijahPic = love.graphics.newImage("elijahPic.png")
   addyPic = love.graphics.newImage("addysonPic.png")
-  --maxPic = love.graphics.newImage("maxPic.png")
-  --harperPic = love.graphics.newImage("harperPic.png")
-  --shirleyPic = love.graphics.newImage("shirlyPic.png")
-  --bettyPic = love.graphics.newImage("bettyPic.png")
-  --sharonPic = love.graphics.newImage("sharonPic.png")
+  maxPic = love.graphics.newImage("maxPic.png")
+  harperPic = love.graphics.newImage("harperPic.png")
   megPic = love.graphics.newImage("megPic.png")
-  --emPic = love.graphics.newImage("emPic.png")
-  --calebPic = love.graphics.newImage("calebPic.png")
-  --elliotPic = love.graphics.newImage("elliotPic.png")
+  emPic = love.graphics.newImage("EmPic.jpg")
+  calebPic = love.graphics.newImage("calebPic.png")
+  jonPic = love.graphics.newImage("jon.png")
+  elliotPic = love.graphics.newImage("elliot.png")
   transition = true
   transTimer = 5
 end
@@ -61,9 +54,9 @@ function spawnFamilyBubble()
   bubble.size = 100
   bubble.x = math.random(100, love.graphics.getWidth() - bubble.size)
   bubble.y = love.graphics.getHeight() + bubble.size
-  bubble.speed = math.random(50, 200)
+  bubble.speed = math.random(100, 150)
   bubble.popped = false
-  randomType = math.random(1, 12)
+  randomType = math.random(1, 19)
 
   if randomType == 1 then
     bubble.type = "Mama"
@@ -101,6 +94,27 @@ function spawnFamilyBubble()
   elseif randomType == 12 then
     bubble.type = "Andrew"
 
+  elseif randomType == 13 then
+    bubble.type = "Max"
+
+  elseif randomType == 14 then
+    bubble.type = "Em"
+
+  elseif randomType == 15 then
+    bubble.type = "Caleb"
+
+  elseif randomType == 16 then
+    bubble.type = "Elijah"
+
+  elseif randomType == 17 then
+    bubble.type = "Harper"
+
+  elseif randomType == 18 then
+    bubble.type = "Jon"
+
+  elseif randomType == 19 then
+    bubble.type = "Elliot"
+
   else
     bubble.type = "Bubble"
   end
@@ -115,7 +129,7 @@ function updateFamilyBubbles(dt)
 
   if bubbleSpawnTimer <= 0 then
     spawnFamilyBubble()
-    bubbleSpawnTimer = 2
+    bubbleSpawnTimer = 2.5
   end
 
   for i,b in ipairs(famBubbles) do
@@ -131,7 +145,9 @@ function updateFamilyBubbles(dt)
           bMamaPopped = true
 
         elseif b.type == "Walle" then
+          catSound:setVolume(.5)
           catSound:play()
+          catSound:setVolume(.5)
           bWallePopped = true
 
         elseif b.type == "Dada" then
@@ -173,9 +189,37 @@ function updateFamilyBubbles(dt)
         elseif b.type == "Andrew" then
           drewSound:play()
           bDrewPopped = true
+
+        elseif b.type == "Elijah" then
+          elijahSound:play()
+          bElijahPopped = true
+
+        elseif b.type == "Caleb" then
+          calebSound:play()
+          bCalebPopped = true
+
+        elseif b.type == "Em" then
+          emSound:play()
+          bEmPopped = true
+
+        elseif b.type == "Max" then
+          maxSound:play()
+          bMaxPopped = true
+
+         elseif b.type == "Harper" then
+          harperSound:play()
+          bHarperPopped = true
+
+        elseif b.type == "Jon" then
+        --  jonSound:play()
+          bJonPopped = true
+
+
+        elseif b.type == "Elliot" then
+        --  elliotSound:play()
+          bElliotPopped = true
         end
       end
-
       if  b.y < 0 - b.size then
         table.remove(famBubbles, i)
       end
@@ -185,30 +229,39 @@ function updateFamilyBubbles(dt)
    if timer > 0 then
      timer = timer - dt
    end
+end
 
-   if timer <= 0 then
-     resetFamBools()
-     timer = 0
-     bReadyToClap = true
-     gameState = 1
-     if score > tonumber(highScore) then
-       love.filesystem.write('highScore.txt', score)
-     end
+function resetFamily()
+  resetFamBools()
+  timer = 0
+  bReadyToClap = true
+  gameState = 1
 
-     for i=#famBubbles, 1, -1 do
-       table.remove(famBubbles, i)
-     end
-   end
+  if score > tonumber(highScore) then
+    love.filesystem.write('highScore.txt', score)
+  end
+
+  for i=#famBubbles, 1, -1 do
+    table.remove(famBubbles, i)
+  end
 end
 
 function drawFamilyBubbles()
-  --l--ove.graphics.setColor(1, 1, 1, alpha1)
---  love.graphics.draw(menuBackground, 0, 0, nil, scaleX, scaleY)
-  love.graphics.draw(menuBackground, 0, 0, nil, scaleX*2, scaleY*2)
+  love.graphics.setColor(1, 1, 1)
+  love.graphics.draw(familyBackgroundPic, 0, 0, nil, scaleX, scaleY*1.2)
   love.graphics.setColor(1, 1, 1, .75)
-  drawUI()
   drawClouds()
+  love.graphics.setColor(1, 1, 1, .9)
+  if winWidth < winHeight then
+    love.graphics.draw(familyTree, -175 * pixelScale,  -45 * pixelScale, nil, scaleX*2, scaleY*1.6)
+
+  else
+    love.graphics.draw(familyTree, -175 * pixelScale,  -45 * pixelScale, nil, scaleX*1.5, scaleY*1.4)
+  end
+
+  love.graphics.setColor(1, 1, 1, .75)
   drawBirds()
+  drawUI()
   love.graphics.setColor(1, 1, 1)
   for i,b in ipairs(famBubbles) do
     if b.type == "Mama" then
@@ -283,13 +336,55 @@ function drawFamilyBubbles()
       love.graphics.setColor(1, 1, 1, .75)
       love.graphics.draw(drewPic, b.x + bubblePic:getWidth()/2.25, b.y - bubblePic:getHeight()/1.75, 0, .35)
 
-    else
-      love.graphics.setColor(1, 1, 1, 1)
-      love.graphics.draw(bubblePic, b.x, b.y-100, 0, 1.75)
-    end
-  end
+    elseif b.type == "Max" then
+        love.graphics.setColor(1, 1, 1, 1)
+        love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
+        love.graphics.setColor(1, 1, 1, .75)
+        love.graphics.draw(maxPic, b.x + bubblePic:getWidth()/2.75, b.y - bubblePic:getHeight()/1.75, 0, .2)
 
+      elseif b.type == "Em" then
+        love.graphics.setColor(1, 1, 1, 1)
+        love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
+        love.graphics.setColor(1, 1, 1, .75)
+        love.graphics.draw(emPic, b.x + bubblePic:getWidth()/2.25, b.y - bubblePic:getHeight()/1.75, 0, .1)
+
+      elseif b.type == "Elijah" then
+        love.graphics.setColor(1, 1, 1, 1)
+        love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
+        love.graphics.setColor(1, 1, 1, .75)
+        love.graphics.draw(elijahPic, b.x + bubblePic:getWidth()/2.75, b.y - bubblePic:getHeight()/1.75, 0, .2)
+
+      elseif b.type == "Caleb" then
+          love.graphics.setColor(1, 1, 1, 1)
+          love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
+          love.graphics.setColor(1, 1, 1, .75)
+          love.graphics.draw(calebPic, b.x + bubblePic:getWidth()/2.75, b.y - bubblePic:getHeight()/1.75, 0, .2)
+
+      elseif b.type == "Harper" then
+          love.graphics.setColor(1, 1, 1, 1)
+          love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
+          love.graphics.setColor(1, 1, 1, .75)
+          love.graphics.draw(harperPic, b.x + bubblePic:getWidth()/2.75, b.y - bubblePic:getHeight()/1.75, 0, .2)
+
+      elseif b.type == "Jon" then
+          love.graphics.setColor(1, 1, 1, 1)
+          love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
+          love.graphics.setColor(1, 1, 1, .75)
+          love.graphics.draw(jonPic, b.x + bubblePic:getWidth()/2.75, b.y - bubblePic:getHeight()/1.45, 0, .2)
+
+      elseif b.type == "Elliot" then
+          love.graphics.setColor(1, 1, 1, 1)
+          love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
+          love.graphics.setColor(1, 1, 1, .75)
+          love.graphics.draw(elliotPic, b.x + bubblePic:getWidth()/2.75, b.y - bubblePic:getHeight()/1.75, 0, .2)
+
+      else
+        love.graphics.setColor(1, 1, 1, 1)
+        love.graphics.draw(bubblePic, b.x, b.y-100, 0, 1.75)
+      end
+  end
+  drawQuitButton()
   love.graphics.setColor(0, .73, .95)
-  love.graphics.print("Score = " .. score, 0, 0)
-  love.graphics.printf("Time: " .. math.ceil(timer), 0, 0, love.graphics.getWidth(), "right")
+  --love.graphics.print("Score = " .. score, 0, 0)
+--  love.graphics.printf("Time: " .. math.ceil(timer), 0, 0, love.graphics.getWidth(), "right")
 end

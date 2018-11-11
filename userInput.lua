@@ -1,15 +1,19 @@
+touchid = 0
 
 function love.mousepressed(x, y, button, isTouch)
-  love.system.vibrate(.2)
   if button == 1 and gameState == 1 then
     for i, b in ipairs(birds) do
       if distanceBetween(b.x + 50, b.y + 45, x, y) < 50 then
         score = score + 2
         chirpSound:play()
+        chirpSound:setVolume(.3)
         b.popped = true
+        love.system.vibrate(.1)
       end
     end
   end
+
+
 
   if button == 1 and gameState == 2 then
     for i, n in ipairs(famBubbles) do
@@ -17,6 +21,7 @@ function love.mousepressed(x, y, button, isTouch)
         score = score + 1
         buttonSound:play()
         n.popped = true
+        love.system.vibrate(.1)
       end
     end
 
@@ -24,7 +29,9 @@ function love.mousepressed(x, y, button, isTouch)
       if distanceBetween(b.x + 50, b.y + 45, x, y) < 50 then
         score = score + 2
         chirpSound:play()
+        chirpSound:setVolume(.3)
         b.popped = true
+        love.system.vibrate(.1)
       end
     end
   end
@@ -35,6 +42,7 @@ function love.mousepressed(x, y, button, isTouch)
         score = score + 1
         buttonSound:play()
         b.popped = true
+        love.system.vibrate(.1)
       end
     end
 
@@ -42,7 +50,9 @@ function love.mousepressed(x, y, button, isTouch)
       if distanceBetween(b.x + 50, b.y + 45, x, y) < 50 then
         score = score + 2
         chirpSound:play()
+        chirpSound:setVolume(.3)
         b.popped = true
+        love.system.vibrate(.1)
       end
     end
   end
@@ -53,6 +63,7 @@ function love.mousepressed(x, y, button, isTouch)
         score = score + 1
         buttonSound:play()
         b.popped = true
+        love.system.vibrate(.1)
       end
     end
 
@@ -60,7 +71,9 @@ function love.mousepressed(x, y, button, isTouch)
       if distanceBetween(b.x + 50, b.y + 45, x, y) < 50 then
         score = score + 2
         chirpSound:play()
+        chirpSound:setVolume(.3)
         b.popped = true
+        love.system.vibrate(.1)
       end
     end
   end
@@ -71,6 +84,7 @@ function love.mousepressed(x, y, button, isTouch)
         score = score + 1
         buttonSound:play()
         b.popped = true
+        love.system.vibrate(.1)
       end
     end
 
@@ -78,7 +92,9 @@ function love.mousepressed(x, y, button, isTouch)
       if distanceBetween(b.x + 50, b.y + 45, x, y) < 50 then
         score = score + 2
         chirpSound:play()
+        chirpSound:setVolume(.3)
         b.popped = true
+        love.system.vibrate(.1)
       end
     end
   end
@@ -93,13 +109,16 @@ function love.mousepressed(x, y, button, isTouch)
       timer = 30
       onGameBegin = true
       gameState = 2
+      love.system.vibrate(.1)
     end
 
     for i, b in ipairs(birds) do
       if distanceBetween(b.x + birdPic1:getHeight(), b.y + birdPic1:getHeight(), x, y) < 50 then
         score = score + 2
         chirpSound:play()
+        chirpSound:setVolume(.3)
         b.popped = true
+        love.system.vibrate(.1)
       end
     end
     --Number bubble game chosen
@@ -111,6 +130,7 @@ function love.mousepressed(x, y, button, isTouch)
       timer = 30
       onGameBegin = true
       gameState = 3
+      love.system.vibrate(.1)
     end
 
     --Color bubble game chosen
@@ -122,6 +142,7 @@ function love.mousepressed(x, y, button, isTouch)
       timer = 30
       onGameBegin = true
       gameState = 4
+      love.system.vibrate(.1)
     end
 
     --Shape bubble game chosen
@@ -133,25 +154,33 @@ function love.mousepressed(x, y, button, isTouch)
       timer = 30
       onGameBegin = true
       gameState = 5
+      love.system.vibrate(.1)
     end
   end
 end--]]
 
+function love.mousereleased(x, y, button, isTouch)
+  --love.graphics.printf("Released", 50, 50)
+end
+
 function love.touchpressed(id, x, y, dx, dy, pressure)
-  love.system.vibrate(.2)
+
   if gameState == 1 then
     for i, b in ipairs(birds) do
       if distanceBetween(b.x, b.y, x, y) < 50 then
         score = score + 2
         buttonSound:play()
         b.popped = true
+        love.system.vibrate(.1)
       end
 
       for i, b in ipairs(birds) do
         if distanceBetween(b.x + 50, b.y + 45, x, y) < 50 then
           score = score + 2
           chirpSound:play()
+          chirpSound:setVolume(.3)
           b.popped = true
+          love.system.vibrate(.1)
         end
       end
     end
@@ -164,6 +193,7 @@ function love.touchpressed(id, x, y, dx, dy, pressure)
       timer = 30
       onGameBegin = true
       gameState = 2
+      love.system.vibrate(.1)
     end
 
     --Number bubble game chosen
@@ -175,6 +205,7 @@ function love.touchpressed(id, x, y, dx, dy, pressure)
       timer = 30
       onGameBegin = true
       gameState = 3
+      love.system.vibrate(.1)
     end
 
     --Number color game chosen
@@ -186,6 +217,7 @@ function love.touchpressed(id, x, y, dx, dy, pressure)
       timer = 30
       onGameBegin = true
       gameState = 4
+      love.system.vibrate(.1)
     end
 
     --Shape bubble game chosen
@@ -197,6 +229,7 @@ function love.touchpressed(id, x, y, dx, dy, pressure)
       timer = 30
       onGameBegin = true
       gameState = 5
+      love.system.vibrate(.1)
     end
   end
 
@@ -206,30 +239,16 @@ function love.touchpressed(id, x, y, dx, dy, pressure)
         score = score + 1
         buttonSound:play()
         n.popped = true
+        love.system.vibrate(.1)
       end
-
-      for i, b in ipairs(birds) do
-        if distanceBetween(b.x + 50, b.y + 45, x, y) < 50 then
-          score = score + 2
-          chirpSound:play()
-          b.popped = true
-        end
-      end
-    end
-
-    for i, b in ipairs(birds) do
-      if distanceBetween(b.x, b.y, x, y) < 50 then
-        score = score + 2
-        buttonSound:play()
-        b.popped = true
-      end
-    end
 
     for i, b in ipairs(birds) do
       if distanceBetween(b.x + 50, b.y + 45, x, y) < 50 then
         score = score + 2
         chirpSound:play()
+        chirpSound:setVolume(.3)
         b.popped = true
+        love.system.vibrate(.1)
       end
     end
   end
@@ -240,6 +259,7 @@ function love.touchpressed(id, x, y, dx, dy, pressure)
         score = score + 1
         buttonSound:play()
         b.popped = true
+        love.system.vibrate(.1)
       end
     end
 
@@ -247,7 +267,9 @@ function love.touchpressed(id, x, y, dx, dy, pressure)
       if distanceBetween(b.x + 50, b.y + 45, x, y) < 50 then
         score = score + 2
         chirpSound:play()
+        chirpSound:setVolume(.3)
         b.popped = true
+        love.system.vibrate(.1)
       end
     end
   end
@@ -258,6 +280,7 @@ function love.touchpressed(id, x, y, dx, dy, pressure)
         score = score + 1
         buttonSound:play()
         b.popped = true
+        love.system.vibrate(.1)
       end
     end
 
@@ -265,7 +288,9 @@ function love.touchpressed(id, x, y, dx, dy, pressure)
       if distanceBetween(b.x + 50, b.y + 45, x, y) < 50 then
         score = score + 2
         chirpSound:play()
+        chirpSound:setVolume(.3)
         b.popped = true
+        love.system.vibrate(.1)
       end
     end
   end
@@ -276,6 +301,7 @@ function love.touchpressed(id, x, y, dx, dy, pressure)
         score = score + 1
         buttonSound:play()
         b.popped = true
+        love.system.vibrate(.1)
       end
     end
 
@@ -283,18 +309,12 @@ function love.touchpressed(id, x, y, dx, dy, pressure)
       if distanceBetween(b.x + 50, b.y + 45, x, y) < 50 then
         score = score + 2
         chirpSound:play()
+        chirpSound:setVolume(.3)
         b.popped = true
-        love.system.vibrate(.2)
+        love.system.vibrate(.1)
       end
     end
   end
-
-
-  --User has chosen to exit TODO find a better design for this
---  if distanceBetween(bird.x, exitButton.y, love.mouse.getX(), love.mouse.getY()) < exitButton.size then
---    gameState = nil
---    gameState = 0
---  end
 end
 
 function checkBird()
@@ -303,7 +323,8 @@ function checkBird()
       score = score + 2
       buttonSound:play()
       b.popped = true
-      love.system.vibrate(.2)
+      love.system.vibrate(.1)
     end
   end
+end
 end
