@@ -146,7 +146,7 @@ function updateColorBubbles(dt)
       love.graphics.draw(rainbow, winWidth/2, winHeight/3, nil, scaleX*1.5, scaleY*1.5)
       drawClouds()
       drawBirds()
-      drawQuitButton()
+
       love.graphics.setColor(1, 1, 1)
       for i,b in ipairs(colorBubbles) do
         if b.type == "Blue" then
@@ -195,5 +195,6 @@ function updateColorBubbles(dt)
           love.graphics.setColor(1, 1, 1, .75)
         end
     end
+    drawQuitButton()
     love.graphics.setColor(1, 1, 1)
 end

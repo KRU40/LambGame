@@ -47,6 +47,7 @@ function loadFamilyBubble()
   elliotPic = love.graphics.newImage("elliot.png")
   transition = true
   transTimer = 5
+  numPopped = 0
 end
 
 function spawnFamilyBubble()
@@ -56,7 +57,15 @@ function spawnFamilyBubble()
   bubble.y = love.graphics.getHeight() + bubble.size
   bubble.speed = math.random(100, 150)
   bubble.popped = false
-  randomType = math.random(1, 19)
+
+  if numPopped < 20 then
+    numPopped = numPopped + 1
+    randomType = numPopped
+
+
+  else
+    randomType = math.random(1, 19)
+  end
 
   if randomType == 1 then
     bubble.type = "Mama"
@@ -116,7 +125,7 @@ function spawnFamilyBubble()
     bubble.type = "Elliot"
 
   else
-    bubble.type = "Bubble"
+    bubble.type = "Lamb"
   end
 
   table.insert(famBubbles, bubble)
@@ -214,12 +223,12 @@ function updateFamilyBubbles(dt)
         --  jonSound:play()
           bJonPopped = true
 
-
         elseif b.type == "Elliot" then
         --  elliotSound:play()
           bElliotPopped = true
         end
       end
+
       if  b.y < 0 - b.size then
         table.remove(famBubbles, i)
       end
@@ -260,8 +269,8 @@ function drawFamilyBubbles()
   end
 
   love.graphics.setColor(1, 1, 1, .75)
-  drawBirds()
   drawUI()
+  drawBirds()
   love.graphics.setColor(1, 1, 1)
   for i,b in ipairs(famBubbles) do
     if b.type == "Mama" then
@@ -376,7 +385,7 @@ function drawFamilyBubbles()
           love.graphics.setColor(1, 1, 1, 1)
           love.graphics.draw(bubblePic, b.x, b.y - 100, 0, 1.75)
           love.graphics.setColor(1, 1, 1, .75)
-          love.graphics.draw(elliotPic, b.x + bubblePic:getWidth()/2.75, b.y - bubblePic:getHeight()/1.75, 0, .2)
+          love.graphics.draw(elliotPic, b.x + bubblePic:getWidth()/2.75, b.y - bubblePic:getHeight()/1.45, 0, .2)
 
       else
         love.graphics.setColor(1, 1, 1, 1)

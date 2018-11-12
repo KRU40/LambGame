@@ -1,4 +1,4 @@
-holdTime = 2.5
+holdTime = 4
 bExitHeld = false
 
 function loadQuitButton()
@@ -16,7 +16,7 @@ function updateQuitButton(dt)
     bExitHeld = true
 
   else
-    holdTime = 2.5
+    holdTime = 4
     bExitHeld = false
   end
 
@@ -43,15 +43,15 @@ function drawQuitButton()
       love.graphics.setColor(1, 1, 1, .55)
       love.graphics.draw(homeIcon, exitButton.x - 100 * pixelScale, exitButton.y  -  100 * pixelScale, nil, .45, .45)
       love.graphics.setColor(1, 0, 0)
-      if holdTime > 1.5 then
+      if holdTime > 3 then
         love.graphics.setColor(1, 0, 0)
         love.graphics.draw(threeQuitPic, exitButton.x - 93 * pixelScale,exitButton.y - 93 * pixelScale, nil, .15, .15)
         --buttonSound:play()
-      elseif holdTime > .5 then
+      elseif holdTime > 2 then
         love.graphics.setColor(1, 0, 0)
         love.graphics.draw(twoQuitPic, exitButton.x - 93 * pixelScale,exitButton.y - 93 * pixelScale, nil, .15, .15)
         --buttonSound:play()
-      elseif holdTime > 0 then
+      elseif holdTime > 1 then
         love.graphics.setColor(1, 0, 0)
         love.graphics.draw(oneQuitPic, exitButton.x - 93 * pixelScale,exitButton.y - 93 * pixelScale, nil, .15, .15)
         buttonSound:play()

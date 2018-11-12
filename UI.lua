@@ -92,45 +92,45 @@ function drawUI()
     if bMamaPopped == false then
       love.graphics.setColor(1, 1, 1, .5)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 7.5, 140 * pixelScale, 0, .5)
-      love.graphics.draw(mamaPic, firstPos + bubbleUIScale * 7.7, 140 * 1.06 * pixelScale, 0, .06)
+      love.graphics.draw(mamaPic, firstPos + bubbleUIScale * 7.7, 140 * 1.065 * pixelScale, 0, .06)
     else
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 7.5,140 * pixelScale, 0, .5)
-      love.graphics.draw(mamaPic, firstPos + bubbleUIScale * 7.7, 140 * 1.06 * pixelScale, 0, .06)
+      love.graphics.draw(mamaPic, firstPos + bubbleUIScale * 7.7, 140 * 1.065 * pixelScale, 0, .06)
     end
 
     if bDadaPopped == false then
       love.graphics.setColor(1, 1, 1, .5)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 6.5, 140 * pixelScale, 0, .5)
-      love.graphics.draw(dadaPic,firstPos + bubbleUIScale * 6.5 * 1.035, 140 * 1.05 * pixelScale, 0, .017)
+      love.graphics.draw(dadaPic,firstPos + bubbleUIScale * 6.5 * 1.03, 140 * 1.055 * pixelScale, 0, .017)
 
     else
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 6.5, 140 * pixelScale, 0, .5)
       love.graphics.setColor(1, 1, 1, .9)
-      love.graphics.draw(dadaPic, firstPos + bubbleUIScale * 6.5 * 1.035, 140 * 1.05 * pixelScale, 0, .017)
+      love.graphics.draw(dadaPic, firstPos + bubbleUIScale * 6.5 * 1.03, 140 * 1.055 * pixelScale, 0, .017)
     end
 
     if bPapaPopped == false then
       love.graphics.setColor(1, 1, 1, .5)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 5, 50 * pixelScale, 0, .5)
-      love.graphics.draw(papaPic,firstPos + bubbleUIScale * 5 * 1.05, 50 * 1.2 * pixelScale, 0, .0127)
+      love.graphics.draw(papaPic,firstPos + bubbleUIScale * 5 * 1.045, 50 * 1.2 * pixelScale, 0, .0127)
 
     else
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 5, 50 * pixelScale, 0, .5)
-      love.graphics.draw(papaPic, firstPos + bubbleUIScale * 5 * 1.05, 50 * 1.2 * pixelScale, 0, .0127)
+      love.graphics.draw(papaPic, firstPos + bubbleUIScale * 5 * 1.045, 50 * 1.2 * pixelScale, 0, .0127)
     end
 
     if bYayaPopped == false then
       love.graphics.setColor(1, 1, 1, .5)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 6, 50 * pixelScale, 0, .5)
-      love.graphics.draw(yayaPic, firstPos + bubbleUIScale * 6 * 1.05, 50 * 1.1 * pixelScale, 0, .022)
+      love.graphics.draw(yayaPic, firstPos + bubbleUIScale * 6 * 1.042, 50 * 1.15 * pixelScale, 0, .022)
 
     else
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 6, 50 * pixelScale, 0, .5)
-      love.graphics.draw(yayaPic, firstPos + bubbleUIScale * 6* 1.05, 50 * 1.1 * pixelScale, 0, .022)
+      love.graphics.draw(yayaPic, firstPos + bubbleUIScale * 6* 1.042, 50 * 1.15 * pixelScale, 0, .022)
     end
 
     if bMegPopped == false then
@@ -147,67 +147,67 @@ function drawUI()
     if bLambPopped == false then
       love.graphics.setColor(1, 1, 1, .5)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 7, 230 * pixelScale, 0, .5)
-      love.graphics.draw(lambPic, firstPos + bubbleUIScale * 7 * 1.035, 230 * 1.03 * pixelScale, 0, .055)
+      love.graphics.draw(lambPic, firstPos + bubbleUIScale * 7 * 1.03, 230 * 1.03 * pixelScale, 0, .055)
 
     else
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 7, 230 * pixelScale, 0, .5)
-      love.graphics.draw(lambPic, firstPos + bubbleUIScale * 7 * 1.035, 230 * 1.03 * pixelScale, 0, .055)
+      love.graphics.draw(lambPic, firstPos + bubbleUIScale * 7 * 1.03, 230 * 1.03 * pixelScale, 0, .055)
     end
 
     if bDebbiePopped == false then
       love.graphics.setColor(1, 1, 1, .5)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 9, 50 * pixelScale, 0, .5)
-      love.graphics.draw(debbiePic, firstPos + bubbleUIScale * 9 * 1.025, 50 * 1.17 * pixelScale, 0, .12)
+      love.graphics.draw(debbiePic, firstPos + bubbleUIScale * 9 * 1.0225, 50 * 1.17 * pixelScale, 0, .12)
 
     else
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 9, 50 * pixelScale, 0, .5)
-      love.graphics.draw(debbiePic, firstPos + bubbleUIScale * 9 * 1.025, 50 * 1.17 * pixelScale, 0, .12)
+      love.graphics.draw(debbiePic, firstPos + bubbleUIScale * 9 * 1.0225, 50 * 1.17 * pixelScale, 0, .12)
     end
 
     if bDrewPopped == false then
       love.graphics.setColor(1, 1, 1, .5)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 10, 30 * pixelScale, 0, .5)
-      love.graphics.draw(drewPic, firstPos + bubbleUIScale * 10 * 1.0235, 30 * 1.2 * pixelScale, 0, .105)
+      love.graphics.draw(drewPic, firstPos + bubbleUIScale * 10 * 1.0235, 30 * 1.3 * pixelScale, 0, .105)
 
     else
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 10, 30 * pixelScale, 0, .5)
-      love.graphics.draw(drewPic, firstPos + bubbleUIScale * 10 * 1.0235, 30 * 1.2 * pixelScale, 0, .105)
+      love.graphics.draw(drewPic, firstPos + bubbleUIScale * 10 * 1.0235, 30 * 1.3 * pixelScale, 0, .105)
     end
 
     if bRichPopped == false then
       love.graphics.setColor(1, 1, 1, .5)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 8, 50 * pixelScale, 0, .5)
-      love.graphics.draw(richPic, firstPos + bubbleUIScale * 8 * 1.029, 50 * 1.15 * pixelScale, 0, .11)
+      love.graphics.draw(richPic, firstPos + bubbleUIScale * 8 * 1.025, 50 * 1.15 * pixelScale, 0, .11)
 
     else
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 8, 50 * pixelScale, 0, .5)
-      love.graphics.draw(richPic, firstPos + bubbleUIScale * 8 * 1.029, 50 * 1.15 * pixelScale, 0, .11)
+      love.graphics.draw(richPic, firstPos + bubbleUIScale * 8 * 1.025, 50 * 1.15 * pixelScale, 0, .11)
     end
 
     if bAnnaPopped == false then
       love.graphics.setColor(1, 1, 1, .5)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 7, 30 * pixelScale, 0, .5)
-      love.graphics.draw(annaPic, firstPos + bubbleUIScale * 7 * 1.035, 30 * 1.25 * pixelScale, 0, .11)
+      love.graphics.draw(annaPic, firstPos + bubbleUIScale * 7 * 1.0325, 30 * 1.25 * pixelScale, 0, .11)
 
     else
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 7, 30 * pixelScale, 0, .5)
-      love.graphics.draw(annaPic, firstPos + bubbleUIScale * 7 * 1.035, 30 * 1.25 * pixelScale, 0, .11)
+      love.graphics.draw(annaPic, firstPos + bubbleUIScale * 7 * 1.0325, 30 * 1.25 * pixelScale, 0, .11)
     end
 
     if bAddyPopped == false then
       love.graphics.setColor(1, 1, 1, .5)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 6, 230 * pixelScale, 0, .5)
-      love.graphics.draw(addyPic, firstPos + bubbleUIScale * 6 * 1.04, 230 * 1.025 * pixelScale, 0, .115)
+      love.graphics.draw(addyPic, firstPos + bubbleUIScale * 6 * 1.035, 230 * 1.025 * pixelScale, 0, .115)
 
     else
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 6, 230 * pixelScale, 0, .5)
-      love.graphics.draw(addyPic, firstPos + bubbleUIScale * 6 * 1.04, 230 * 1.025 * pixelScale, 0, .115)
+      love.graphics.draw(addyPic, firstPos + bubbleUIScale * 6 * 1.035, 230 * 1.025 * pixelScale, 0, .115)
     end
 
     if bWallePopped == false then
@@ -224,78 +224,78 @@ function drawUI()
     if bCalebPopped == false then
       love.graphics.setColor(1, 1, 1, .5)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 2.5, 140 * pixelScale, 0, .5)
-      love.graphics.draw(calebPic, firstPos + bubbleUIScale * 2.5 * 1.055, 140 * 1.055 * pixelScale, 0, .063)
+      love.graphics.draw(calebPic, firstPos + bubbleUIScale * 2.5 * 1.0675, 140 * 1.055 * pixelScale, 0, .063)
 
     else
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 2.5, 140 * pixelScale, 0, .5)
-      love.graphics.draw(calebPic, firstPos + bubbleUIScale * 2.5 * 1.055, 140 * 1.055 * pixelScale, 0, .063)
+      love.graphics.draw(calebPic, firstPos + bubbleUIScale * 2.5 * 1.0675, 140 * 1.055 * pixelScale, 0, .063)
     end
 
     if bMaxPopped == false then
       love.graphics.setColor(1, 1, 1, .5)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 5, 230 * pixelScale, 0, .5)
-      love.graphics.draw(maxPic, firstPos + bubbleUIScale * 5 * 1.055, 230 * 1.045 * pixelScale, 0, .063)
+      love.graphics.draw(maxPic, firstPos + bubbleUIScale * 5 * 1.035, 230 * 1.0425 * pixelScale, 0, .063)
 
     else
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 5, 230 * pixelScale, 0, .5)
-      love.graphics.draw(maxPic, firstPos + bubbleUIScale * 5 * 1.055, 230 * 1.045 * pixelScale, 0, .063)
+      love.graphics.draw(maxPic, firstPos + bubbleUIScale * 5 * 1.035, 230 * 1.0425 * pixelScale, 0, .063)
     end
 
     if bElijahPopped == false then
       love.graphics.setColor(1, 1, 1, .5)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 2, 230 * pixelScale, 0, .5)
-      love.graphics.draw(elijahPic, firstPos + bubbleUIScale * 2.17, 230 * 1.045 * pixelScale, 0, .063)
+      love.graphics.draw(elijahPic, firstPos + bubbleUIScale * 2.15, 230 * 1.04 * pixelScale, 0, .063)
 
     else
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 2, 230 * pixelScale, 0, .5)
-      love.graphics.draw(elijahPic, firstPos + bubbleUIScale * 2 * 1.17, 230 * 1.045 * pixelScale, 0, .063)
+      love.graphics.draw(elijahPic, firstPos + bubbleUIScale * 2.15, 230 * 1.04 * pixelScale, 0, .063)
     end
 
     if bHarperPopped == false then
       love.graphics.setColor(1, 1, 1, .5)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 3, 230 * pixelScale, 0, .5)
-      love.graphics.draw(harperPic, firstPos + bubbleUIScale * 3.17, 230 * 1.045 * pixelScale, 0, .063)
+      love.graphics.draw(harperPic, firstPos + bubbleUIScale * 3.17, 230 * 1.045 * pixelScale, 0, .061)
 
     else
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 3, 230 * pixelScale, 0, .5)
-      love.graphics.draw(harperPic, firstPos + bubbleUIScale * 3 * 1.17, 230 * 1.045 * pixelScale, 0, .063)
+      love.graphics.draw(harperPic, firstPos + bubbleUIScale * 3.17, 230 * 1.045 * pixelScale, 0, .061)
     end
 
     if bEmPopped == false then
       love.graphics.setColor(1, 1, 1, .5)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 1.5, 140 * pixelScale, 0, .5)
-      love.graphics.draw(emPic, firstPos + bubbleUIScale * 1.5 * 1.17, 140 * 1.055 * pixelScale, 0, .0325)
+      love.graphics.draw(emPic, firstPos + bubbleUIScale * 1.45 * 1.17, 140 * 1.055 * pixelScale, 0, .0325)
 
     else
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 1.5, 140 * pixelScale, 0, .5)
-      love.graphics.draw(emPic, firstPos + bubbleUIScale * 1.5 * 1.17, 140 * 1.055 * pixelScale, 0, .0325)
+      love.graphics.draw(emPic, firstPos + bubbleUIScale * 1.45 * 1.17, 140 * 1.055 * pixelScale, 0, .0325)
     end
 
     if bJonPopped == false then
       love.graphics.setColor(1, 1, 1, .5)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 5.5, 140 * pixelScale, 0, .5)
-      love.graphics.draw(jonPic, firstPos + bubbleUIScale * 5.5 * 1.05, 140 * 1.055 * pixelScale, 0, .055)
+      love.graphics.draw(jonPic, firstPos + bubbleUIScale * 5.5 * 1.0425, 140 * 1.055 * pixelScale, 0, .055)
 
     else
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 5.5, 140 * pixelScale, 0, .5)
-      love.graphics.draw(jonPic, firstPos + bubbleUIScale * 5.5 * 1.05, 140 * 1.055 * pixelScale, 0, .055)
+      love.graphics.draw(jonPic, firstPos + bubbleUIScale * 5.5 * 1.0425, 140 * 1.055 * pixelScale, 0, .055)
     end
 
     if bElliotPopped == false then
       love.graphics.setColor(1, 1, 1, .5)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 3.5, 140 * pixelScale, 0, .5)
-      love.graphics.draw(elliotPic, firstPos + bubbleUIScale * 3.5 * 1.05, 140 * 1.055 * pixelScale, 0, .055)
+      love.graphics.draw(elliotPic, firstPos + bubbleUIScale * 3.5 * 1.065, 140 * 1.055 * pixelScale, 0, .055)
 
     else
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(bubblePic, firstPos + bubbleUIScale * 3.5, 140 * pixelScale, 0, .5)
-      love.graphics.draw(elliotPic, firstPos + bubbleUIScale * 3.5 * 1.05, 140 * 1.055 * pixelScale, 0, .055)
+      love.graphics.draw(elliotPic, firstPos + bubbleUIScale * 3.5 * 1.065, 140 * 1.055 * pixelScale, 0, .055)
     end
   end
 
