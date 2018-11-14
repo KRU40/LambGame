@@ -13,8 +13,6 @@ function love.mousepressed(x, y, button, isTouch)
     end
   end
 
-
-
   if button == 1 and gameState == 2 then
     for i, n in ipairs(famBubbles) do
       if distanceBetween(n.x + bubblePic:getWidth()/4, n.y + bubblePic:getHeight()/4, love.mouse.getX(), love.mouse.getY()) < 150 then
@@ -97,6 +95,26 @@ function love.mousepressed(x, y, button, isTouch)
         love.system.vibrate(.1)
       end
     end
+end
+    if button == 1 and gameState == 6 then
+      for i, b in ipairs(alphabetBubbles) do
+        if distanceBetween(b.x + bubblePic:getWidth()/4, b.y + bubblePic:getHeight()/4, x, y) < 150 then
+          score = score + 1
+          buttonSound:play()
+          b.popped = true
+          love.system.vibrate(.1)
+        end
+      end
+
+      for i, b in ipairs(birds) do
+        if distanceBetween(b.x + 50, b.y + 45, x, y) < 50 then
+          score = score + 2
+          chirpSound:play()
+          chirpSound:setVolume(.3)
+          b.popped = true
+          love.system.vibrate(.1)
+        end
+      end
   end
 
   if gameState == 1 then
@@ -142,6 +160,18 @@ function love.mousepressed(x, y, button, isTouch)
       timer = 30
       onGameBegin = true
       gameState = 4
+      love.system.vibrate(.1)
+    end
+
+    --Alphabet bubble game chosen
+    if distanceBetween(midBubblePos * 1.33 + 10, bubbleYPos + 60, love.mouse.getX(), love.mouse.getY()) < 60 then
+      buttonSound:play()
+      clapSound:play()
+      bFirstGame = false
+      score = 0
+      timer = 30
+      onGameBegin = true
+      gameState = 6
       love.system.vibrate(.1)
     end
 

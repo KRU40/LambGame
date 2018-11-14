@@ -13,7 +13,7 @@ function love.load()
   require('UI')
   require('birds')
   require('quitButton')
-
+  require('alphabet')
   --require('clouds')
 
   --Declaring variables
@@ -48,6 +48,7 @@ function love.load()
   loadUI()
   loadBirds()
   loadQuitButton()
+  loadAlphabet()
 
 
   --Start Music
@@ -130,6 +131,18 @@ function love.update(dt)
 
     updateShapeBubbles(dt)
   end
+
+  if gameState == 6 then
+    love.graphics.setFont(myFont)
+    updateBirds(dt)
+    updateClouds(dt)
+    updateQuitButton(dt)
+    if onGameBegin == true then
+      onGameBegin = false
+    end
+
+    updateAlphabet(dt)
+  end
 end
 
 function love.draw()
@@ -158,6 +171,11 @@ function love.draw()
   --Draw Shape Bubbles
   if gameState == 5 then
     drawShapeBubbles()
+  end
+
+  --Draw Shape Bubbles
+  if gameState == 6 then
+    drawAlphabet()
   end
 
   --love.graphics.setColor(50, 0, 0)

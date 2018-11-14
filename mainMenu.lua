@@ -21,7 +21,7 @@ function loadMainMenu()
   familyMenuBubble = createMenuBubble(midBubblePos * .33, bubbleYPos, "family")
   numberMenuBubble = createMenuBubble(midBubblePos * .66, bubbleYPos, "number")
   colorMenuBubble = createMenuBubble(midBubblePos, bubbleYPos, "color")
-  animalsMenuBubble = createMenuBubble(midBubblePos * 1.33, bubbleYPos, "animals")
+  animalsMenuBubble = createMenuBubble(midBubblePos * 1.33, bubbleYPos, "abc")
   shapesMenuBubble = createMenuBubble(midBubblePos * 1.66, bubbleYPos, "shapes")
 
 end
@@ -59,12 +59,12 @@ function drawMainMenu()
       love.graphics.setFont(myFont)
       love.graphics.print("Color", b.x - b.size/3.5, b.y + 35)
 
-    elseif b.category == "animals" then
+    elseif b.category == "abc" then
       love.graphics.setColor(1, 1, 1, .8)
       love.graphics.draw(bubbleOutline, b.x - b.size/2, b.y, 0, b.scale)
       love.graphics.setColor(0, 0, 0)
       love.graphics.setFont(myFont)
-      love.graphics.print("Animals", b.x - b.size/2.5, b.y + 35)
+      love.graphics.print("Alphabet", b.x - b.size/2.2, b.y + 35)
 
     elseif b.category == "shapes" then
       love.graphics.setColor(1, 1, 1, .8)
